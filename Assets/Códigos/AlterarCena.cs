@@ -50,16 +50,18 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
     //RECARREGA A CENA
     public void Repetir()           
     {
+        UIManager.instance.LigaDesligaPainel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        UIManager.instance.DesativaPainel();
         Time.timeScale = 1;
     }
 
+    //CHAMA O PAINEL DE PAUSE
     public void Pause()
     {
         UIManager.instance.PauseUI();
     }
 
+    //CHAMA O PAINEL DE CONTINUE
     public void Continue()
     {
         UIManager.instance.ContinueUI();

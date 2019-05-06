@@ -24,6 +24,12 @@ public class Movimentacao : MonoBehaviour {
         temp.x += direcao * 0.003f;                 //VELOCIDADE
         rImg.uvRect = temp;
         transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
+    
+    //CONTROLANDO PELO TECLADO PARA TESTES
+        if (Input.GetKey(KeyCode.Space))
+        {
+            Pula();
+        }
     }
 
     //FUNÇÃO QUE VIRA PARA O OUTRO LADO

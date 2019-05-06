@@ -1,5 +1,8 @@
 ﻿// BIBLIOTECAS
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 // CLASSE
 public class ColectManager : MonoBehaviour
@@ -7,6 +10,7 @@ public class ColectManager : MonoBehaviour
     //VARIÁVEIS
     public static ColectManager instance;           //DEFINE A CLASSE COMO PUBLICA
     public int AcaiTotal;
+    public Text Coleta_Total;
 
     //REALIZA ISSO LOGO AO INICIAR
     void Awake()
@@ -25,9 +29,11 @@ public class ColectManager : MonoBehaviour
     //REALIZA ISSO LOGO AO INICIAR
     void Start()
     {
-        GameStartScore();                           //FORÇA O INICIO DO MÉTODO
+        GameStartScore();                                                       //FORÇA O INICIO DO MÉTODO
+        //Coleta_Total = GameObject.Find("CQts-txt").GetComponent<Text>();        //PROCURA SOZINHO O TEXTO
     }
 
+    
     //VERIFICA SE TEM ALGO SALVO NA CHAVE 'AcaiSalvo'
     public void GameStartScore()
     {
@@ -66,4 +72,11 @@ public class ColectManager : MonoBehaviour
     {
         AcaiTotal = PlayerPrefs.GetInt("AcaiSalvo");        
     }
+
+    //ATUALIZA O VALOR DO TXT
+    public void UpdateTotal()
+    {
+        Coleta_Total.text = AcaiTotal.ToString();
+    }
+
 }

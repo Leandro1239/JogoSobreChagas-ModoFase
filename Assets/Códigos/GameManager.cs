@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //VARIÁVEIS
-    public static GameManager instance;
+    public static GameManager instance;                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
 
     //REALIZA ISSO LOGO AO INICIAR
     void Awake()    
     {
-        if (instance == null)                                //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
+        if (instance == null)                                   //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
         {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     //MÉTODO QUE REPETE SEMPRE
     void Update()
     {
-        ColectManager.instance.UpdateScore();               //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
-        UIManager.instance.UpdateUI();                      //INICIA O MÉTODO 'UpdateUI' DA CLASSE 'UIManager'
+        ColectManager.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
+        ColectManager.instance.UpdateTotal();                      //INICIA O MÉTODO 'UpdateTotal' DA CLASSE 'ColectManager'
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE

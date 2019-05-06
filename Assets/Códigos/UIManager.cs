@@ -5,11 +5,12 @@ using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    //VARIÁVEIS
+    public static UIManager instance;                               //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     private Text Coleta_Total;
     public GameObject PainelLose, PainelWin, PainelPause;
 
-
+    //NÃO DESTROI O OBJETO
     void Awake()
     {
         if (instance == null)
@@ -25,59 +26,53 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += Carrega;
     }
 
+    //CARREGA SEMPRE NO INICIO
     void Carrega (Scene cena, LoadSceneMode modo)
     {
-        Coleta_Total = GameObject.Find("TotalAçai_text").GetComponent<Text>();        //PROCURA SOZINHO O TEXTO
         LigaDesligaPainel();
         PainelLose = GameObject.Find("Panel - Lose");
         PainelWin = GameObject.Find("Panel - Win");
         PainelPause = GameObject.Find("Panel - Pause");
     }
 
-    public void UpdateUI()
-    {
-        Coleta_Total.text = ColectManager.instance.AcaiTotal.ToString();
-    }
-
+    // ATIVA PAINEL DE LOSE E PAUSA O TEMPO
     public void GameOverUI()
     {
         PainelLose.SetActive(true);
         Time.timeScale = 0;
     }
 
+    //ATIVA PAINEL DE PRÓXIMO NÍVEL E PAUSA O TEMPO
     public void PassLevelUI()
     {
         PainelWin.SetActive(true);
         Time.timeScale = 0;
     }
 
+    // ATIVA PAINEL DE PAUSE E PAUSA
     public void PauseUI()
     {
         PainelPause.SetActive(true);
         Time.timeScale = 0;
     }
 
+    // DESATIVA PAINEL DE PAUSE E CONTINUA
     public void ContinueUI()
     {
         PainelPause.SetActive(false);
         Time.timeScale = 1;
     }
 
-    void LigaDesligaPainel()
+    // CHAMA UMA FUNÇÃO PARA DESATIVAR OS PAINEIS 
+    public void LigaDesligaPainel()
     {
         StartCoroutine(Tempo());
     }
 
+    // FAZ COM QUE O CÓDIGO ACHE OS PAINEIS
     IEnumerator Tempo()
     {
-        yield return new WaitForSeconds(0.001f);
-        PainelLose.SetActive(false);
-        PainelWin.SetActive(false);
-        PainelPause.SetActive(false);
-    }
-
-    public void DesativaPainel()
-    {
+        yield return new WaitForSeconds(0.01f);
         PainelLose.SetActive(false);
         PainelWin.SetActive(false);
         PainelPause.SetActive(false);

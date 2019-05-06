@@ -6,19 +6,14 @@ using UnityEngine.UI;
 public class ColetaAcai : MonoBehaviour
 {
     //VARIÁVEIS
-    public int AcaiFase;                                             //AÇAI
+    public static ColetaAcai Instance;                              //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
+    public int AcaiFase;                                            //AÇAI
     public Text Coleta_Fase;                                        //TEXTO
 
-    // VERIFICA SE PODE ACABAR A FASE
-    public void OnCollisionEnter2D(Collision2D Pass)
+    //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
+    void Awake()
     {
-        if (Pass.gameObject.CompareTag("Saida"))
-        {
-            if (AcaiFase >= 5)
-            {
-                UIManager.instance.PassLevelUI();
-            }
-        }
+        Instance = this;                                            
     }
 
     // VERIFICA COLISÃO E COLETA E CONTA AÇAI

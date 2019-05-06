@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Sintoma : MonoBehaviour {
 
     //VARIÁVEIS
-    public static Sintoma instance;
+    public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
     public int ValorAtual = 30, Dano = 10, Energia = 10;                    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
 

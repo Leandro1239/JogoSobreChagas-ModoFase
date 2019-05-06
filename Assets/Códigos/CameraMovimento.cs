@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovimento : MonoBehaviour
 {
     //VARIÁVEIS
-    private float dampTime = 0.15f, x = 0.5f, y = 0.15f;                  //SUAVIDADE DA CAMERA, AJUSTE NO EIXO X, AJUSTE NO EIXO Y
+    private float dampTime = 0.15f, x = 0.5f, y = 0.3f;                  //SUAVIDADE DA CAMERA, AJUSTE NO EIXO X, AJUSTE NO EIXO Y
     private Vector3 velocity = Vector3.zero;        //VELOCIDADE
     public Transform player;                        //DEFINE O PLAYER
 
