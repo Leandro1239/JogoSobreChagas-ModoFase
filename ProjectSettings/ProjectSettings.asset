@@ -244,7 +244,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Leandro/Desktop/ChaGame-Fases/Assets/LeandroSenha.keystore
+  AndroidKeystoreName: C:/Users/Leandro/Desktop/JogoChagas/Assets/LeandroSenha.keystore
   AndroidKeyaliasName: leandro
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1

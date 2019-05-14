@@ -41,6 +41,12 @@ public class GameManager : MonoBehaviour
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
+    public void AvisoTutorial()
+    {
+        UIManager.instance.Tutorial();
+    }
+
+    //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
     public void PassLevel()
     {
         UIManager.instance.PassLevelUI();

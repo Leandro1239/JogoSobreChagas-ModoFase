@@ -67,7 +67,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288699937387283476}
   - component: {fileID: 773776384325242769}
-  - component: {fileID: 1304547196775767472}
+  - component: {fileID: 2112053459536615903}
   m_Layer: 0
   m_Name: "ch\xE3o"
   m_TagString: Chao
@@ -138,8 +138,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1304547196775767472
-BoxCollider2D:
+--- !u!68 &2112053459536615903
+EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,16 +151,8 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02421236, y: 0.43989557}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 15.29, y: 1.23}
-    newSize: {x: 15.29, y: 1.23}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 15.096305, y: 0.35020888}
+  m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
+  m_Points:
+  - {x: -7.4984026, y: 0.6363375}
+  - {x: 7.644919, y: 0.6363375}
