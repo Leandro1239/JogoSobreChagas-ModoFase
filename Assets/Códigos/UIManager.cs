@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     }
 
     //CARREGA SEMPRE NO INICIO
-    void Carrega (Scene cena, LoadSceneMode modo)
+    public void Carrega (Scene cena, LoadSceneMode modo)
     {
         LigaDesligaPainel();
         PainelLose = GameObject.Find("Panel - Lose");

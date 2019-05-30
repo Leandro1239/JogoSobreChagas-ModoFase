@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class IrNivelDois : MonoBehaviour
+public class Nivel5: MonoBehaviour
 {
-    public static IrNivelDois instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
+    public static Nivel5 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
     public int AcaiDesseNivel;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
@@ -22,7 +24,7 @@ public class IrNivelDois : MonoBehaviour
     {
         if (Pass.gameObject.CompareTag("Player"))
         {
-            if (AcaiDesseNivel >= 5)
+            if (AcaiDesseNivel >= 15)
             {
                 UIManager.instance.PassLevelUI();            //CHAMA O MENU DE PASSAR DE NÍVEL
             }

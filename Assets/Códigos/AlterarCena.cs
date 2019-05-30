@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 // CLASSE
 public class AlterarCena : MonoBehaviour {            //Troca de cenário de acordo com o número somado
 
+    public static AlterarCena instance;
+
+    // VOLTAR
+
     public void Voltar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
@@ -22,6 +26,49 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 3);
         Time.timeScale = 1;
     }
+
+    public void Voltar4()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 4);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar5()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 5);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar6()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 6);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar7()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 7);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar8()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 8);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar9()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 9);
+        Time.timeScale = 1;
+    }
+
+    public void Voltar10()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 10);
+        Time.timeScale = 1;
+    }
+    // AVANÇAR
 
     public void Avançar1()
     {
@@ -41,6 +88,48 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
         Time.timeScale = 1;
     }
 
+    public void Avançar4()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 4);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar5()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 5);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar6()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 6);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar7()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 7);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar8()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 8);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar9()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 9);
+        Time.timeScale = 1;
+    }
+
+    public void Avançar10()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 10);
+        Time.timeScale = 1;
+    }
+
     //FECHA O JOGO
     public void Sair ()             
     {
@@ -50,9 +139,8 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
     //RECARREGA A CENA
     public void Repetir()           
     {
-        UIManager.instance.LigaDesligaPainel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
+        Continue();
     }
 
     //CHAMA O PAINEL DE PAUSE
