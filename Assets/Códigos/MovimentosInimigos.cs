@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//FAZ A MOVIMENTAÇÃO DO INIMIGO
 public class MovimentosInimigos : MonoBehaviour
 {
     //VARIÁVEIS

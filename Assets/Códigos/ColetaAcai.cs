@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// CLASSE
+// COLETA O AÇAI EM CADA FASE
 public class ColetaAcai : MonoBehaviour
 {
     //VARIÁVEIS
@@ -21,7 +21,7 @@ public class ColetaAcai : MonoBehaviour
     {
         if (Coletar.gameObject.CompareTag("Coletor"))
         {
-            ColectManager.instance.PegouAcai(1);                        //CHAMA O METODO 'PegouAcai' DA CLASSE 'ColectManager' E CONTA +1 EM SEU ARGUMENTO, ACUMULANDO PARA O TOTAL RESGATADO
+            Contador.instance.PegouAcai(1);                        //CHAMA O METODO 'PegouAcai' DA CLASSE 'ColectManager' E CONTA +1 EM SEU ARGUMENTO, ACUMULANDO PARA O TOTAL RESGATADO
             Destroy(Coletar.gameObject);                                //DESTROI O "Coletor", QUE É A TAG DO ACAI
             AcaiFase += 1;                                              //CONTA O AÇAI OBTIDO NA FASE
             Coleta_Fase.text = AcaiFase.ToString();                     //MOSTRA EM TEXTO 

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+//CÓDIGO QUE FAZ NÃO DESTRUIR O OBJETO EM QUE ELE ESTÁ
 public class NaoDestroi : MonoBehaviour
 {
     //VARIÁVEIS

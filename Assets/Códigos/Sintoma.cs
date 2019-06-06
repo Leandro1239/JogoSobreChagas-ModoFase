@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// CLASSE
+// TRATA OS DANOS QUE O PERSONAGEM TOMA
 public class Sintoma : MonoBehaviour {
 
     //VARIÁVEIS

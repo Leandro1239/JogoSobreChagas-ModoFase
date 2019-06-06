@@ -1,7 +1,7 @@
 ﻿// BIBLIOTECAS
 using UnityEngine;
 
-// CLASSE
+//GERENCIA O JOGO
 public class GameManager : MonoBehaviour
 {
     //VARIÁVEIS
@@ -24,14 +24,17 @@ public class GameManager : MonoBehaviour
     //REALIZA ISSO LOGO AO INICIAR
     private void Start()
     {
-        ColectManager.instance.GameStartScore();            //INICIA O MÉTODO 'GameStartScore' DA CLASSE 'ColectManager'
+        Contador.instance.ContaAcai();            //INICIA O MÉTODO 'ContaAcai' DA CLASSE 'ColectManager'
+        Contador.instance.ContaPlay();
     }
 
     //MÉTODO QUE REPETE SEMPRE
     void Update()
     {
-        ColectManager.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
-        ColectManager.instance.UpdateTotal();                      //INICIA O MÉTODO 'UpdateTotal' DA CLASSE 'ColectManager'
+        Contador.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
+        //Contador.instance.UpdateScoreTXT();                      //INICIA O MÉTODO 'UpdateTotal' DA CLASSE 'ColectManager'
+        Contador.instance.UpdatePlay();
+        //Contador.instance.UpdatePlayTXT();
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE

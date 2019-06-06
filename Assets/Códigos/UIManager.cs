@@ -3,11 +3,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+//MOSTRA AS COISAS NA TELA
 public class UIManager : MonoBehaviour
 {
     //VARIÁVEIS
     public static UIManager instance;                               //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    private Text Coleta_Total;
+    Text Coleta_Total;
     public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial;
 
     //NÃO DESTROI O OBJETO

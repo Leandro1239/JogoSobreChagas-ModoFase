@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-// CLASSE
+// TRATA A MOVIMENTAÇÃO DO PERSONAGEM
 public class Movimentacao : MonoBehaviour {
 
     //VARIÁVEIS
