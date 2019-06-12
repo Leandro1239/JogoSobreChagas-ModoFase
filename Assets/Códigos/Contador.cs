@@ -7,7 +7,7 @@ public class Contador : MonoBehaviour
 {
     //VARIÁVEIS
     public static Contador instance;           //DEFINE A CLASSE COMO PUBLICA
-    int AcaiTotal, PlayTotal;
+    public static int AcaiTotal = 0, PlayTotal;
     Text Coleta_Total, Play_Total;
 
     //REALIZA ISSO LOGO AO INICIAR
@@ -16,7 +16,7 @@ public class Contador : MonoBehaviour
         if (instance == null)                       //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -24,19 +24,19 @@ public class Contador : MonoBehaviour
         }
     }
 
-    //REALIZA ISSO LOGO AO INICIAR
-    void Start()
+    public void Update()
     {
-        ContaAcai();                                                       //FORÇA O INICIO DO MÉTODO
-        ContaPlay();
+        AcaiTotal = AcaiTotal + ColetaAcai.Total;
+        Coleta_Total = GameObject.Find("CQts_txt").GetComponent<Text>();
+        Coleta_Total.text = AcaiTotal.ToString();
     }
 
     //---- PARTE DE CONTAGEM DO AÇAI ----
 
     //VERIFICA SE TEM ALGO SALVO NA CHAVE 'AcaiSalvo'
-    public void ContaAcai()
+    /*public void ContaAcai()
     {
-        Coleta_Total = GameObject.Find("CQts_txt").GetComponent<Text>();
+        
         Coleta_Total.text = AcaiTotal.ToString();
 
         if (PlayerPrefs.HasKey("AcaiSalvo"))                
@@ -57,12 +57,6 @@ public class Contador : MonoBehaviour
         Salva(AcaiTotal);                                   //SALVA
     }
 
-    public void PerdeuAcai(int Coletado)
-    {
-        AcaiTotal -= Coletado;                              //SUBTRAI À VARIÁVEL 'AcaiTotal' O VALOR COLETADO NO ARGUMENTO DADO NA CLASSE 'ColetaAcai'
-        Salva(AcaiTotal);                                   //SALVA
-    }
-
     //GUARDA O VALOR DA VARIÁVEL NA CHAVE 'AcaiSalvo'
     public void Salva(int Coletado)
     {
@@ -75,7 +69,7 @@ public class Contador : MonoBehaviour
         AcaiTotal = PlayerPrefs.GetInt("AcaiSalvo");        
     }
 
-    /* //ATUALIZA O VALOR DO TXT
+     //ATUALIZA O VALOR DO TXT
     public void UpdateScoreTXT()
     {
         Coleta_Total.text = AcaiTotal.ToString();
@@ -86,7 +80,7 @@ public class Contador : MonoBehaviour
     //VERIFICA SE TEM ALGO SALVO NA CHAVE 'PlaySalvo'
     public void ContaPlay()
     {
-        Play_Total = GameObject.Find("PQts_txt").GetComponent<Text>();
+       // Play_Total = GameObject.Find("PQts_txt").GetComponent<Text>();
         Play_Total.text = PlayTotal.ToString();
 
         if (PlayerPrefs.HasKey("PlaySalvo"))

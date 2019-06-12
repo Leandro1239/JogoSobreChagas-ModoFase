@@ -5,7 +5,7 @@ using UnityEngine;
 public class Nivel6 : MonoBehaviour
 {
     public static Nivel6 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
-    public int AcaiDesseNivel;
+    public static int AcaiDesseNivel;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     void Awake()
@@ -16,7 +16,7 @@ public class Nivel6 : MonoBehaviour
     //FICA SEMPRE VERIFICANDO MUDANÇA NA VARIAVEL 'AcaiFase' e atribuindo a 'AcaiDesseNivel'
     public void Update()
     {
-        AcaiDesseNivel = ColetaAcai.Instance.AcaiFase;
+        AcaiDesseNivel = ColetaAcai.AcaiFase;
     }
 
     //VERIFICA COLISÃO COM O PLAYER 

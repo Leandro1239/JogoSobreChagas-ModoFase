@@ -24,16 +24,16 @@ public class GameManager : MonoBehaviour
     //REALIZA ISSO LOGO AO INICIAR
     private void Start()
     {
-        Contador.instance.ContaAcai();            //INICIA O MÉTODO 'ContaAcai' DA CLASSE 'ColectManager'
-        Contador.instance.ContaPlay();
+        //Contador.instance.ContaAcai();            //INICIA O MÉTODO 'ContaAcai' DA CLASSE 'ColectManager'
+       // Contador.instance.ContaPlay();
     }
 
     //MÉTODO QUE REPETE SEMPRE
     void Update()
     {
-        Contador.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
+        //Contador.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
         //Contador.instance.UpdateScoreTXT();                      //INICIA O MÉTODO 'UpdateTotal' DA CLASSE 'ColectManager'
-        Contador.instance.UpdatePlay();
+        //Contador.instance.UpdatePlay();
         //Contador.instance.UpdatePlayTXT();
     }
 

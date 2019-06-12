@@ -1,6 +1,5 @@
 ﻿// BIBLIOTECAS
 using UnityEngine;
-using UnityEngine.UI;
 
 //GERENCIA OS PAINEIS
 public class ChamaAviso : MonoBehaviour
