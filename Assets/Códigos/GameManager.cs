@@ -21,20 +21,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //REALIZA ISSO LOGO AO INICIAR
-    private void Start()
+    public void Update()
     {
-        //Contador.instance.ContaAcai();            //INICIA O MÉTODO 'ContaAcai' DA CLASSE 'ColectManager'
-       // Contador.instance.ContaPlay();
-    }
-
-    //MÉTODO QUE REPETE SEMPRE
-    void Update()
-    {
-        //Contador.instance.UpdateScore();                      //INICIA O MÉTODO 'UpdateScore' DA CLASSE 'ColectManager'
-        //Contador.instance.UpdateScoreTXT();                      //INICIA O MÉTODO 'UpdateTotal' DA CLASSE 'ColectManager'
-        //Contador.instance.UpdatePlay();
-        //Contador.instance.UpdatePlayTXT();
+        Contador.instance.AtualizaAcai();
+        Contador.instance.AtualizaPlay();      
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE

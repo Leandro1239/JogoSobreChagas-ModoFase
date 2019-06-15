@@ -72,7 +72,7 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
 
     public void Avançar1()
     {
-        ColetaAcai.AcaiFase = 0;
+        Somador.AcaiFase = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
     }
@@ -140,7 +140,8 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
     //RECARREGA A CENA
     public void Repetir()           
     {
-        ColetaAcai.AcaiFase = 0;
+        Somador.AcaiFase = 0;
+        Contador.instance.Jogou(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Continue();
     }

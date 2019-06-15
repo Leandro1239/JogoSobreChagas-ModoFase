@@ -8,8 +8,9 @@ public class UIManager : MonoBehaviour
 {
     //VARIÁVEIS
     public static UIManager instance;                               //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    Text Coleta_Total;
-    public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial;
+    private string Coleta_Total, Play_Total;
+    private Text CT, PT;
+    private GameObject PainelLose, PainelWin, PainelPause, PainelTutorial;
 
     //NÃO DESTROI O OBJETO
     void Awake()
@@ -17,7 +18,7 @@ public class UIManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -25,6 +26,16 @@ public class UIManager : MonoBehaviour
         }
 
         SceneManager.sceneLoaded += Carrega;
+    }
+
+    public void AtualizaTXT()
+    {
+        Coleta_Total = string .Format("{0}", Contador.instance.AcaiTotal);
+        CT = GameObject.Find("CQts_txt").GetComponent<Text>();
+        CT.text = Coleta_Total;
+        Play_Total = string.Format("{0}", Contador.instance.PlayTotal);
+        PT = GameObject.Find("PQts_txt").GetComponent<Text>();
+        PT.text = Play_Total;
     }
 
     //CARREGA SEMPRE NO INICIO

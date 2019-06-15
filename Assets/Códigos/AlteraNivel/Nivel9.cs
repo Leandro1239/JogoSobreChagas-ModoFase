@@ -16,7 +16,7 @@ public class Nivel9 : MonoBehaviour
     //FICA SEMPRE VERIFICANDO MUDANÇA NA VARIAVEL 'AcaiFase' e atribuindo a 'AcaiDesseNivel'
     public void Update()
     {
-        AcaiDesseNivel = ColetaAcai.AcaiFase;
+        AcaiDesseNivel = Somador.AcaiFase;
     }
 
     //VERIFICA COLISÃO COM O PLAYER 
