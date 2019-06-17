@@ -21,6 +21,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        UIManager.instance.DesligaPainel();
+    }
+
     public void Update()
     {
         Contador.instance.AtualizaAcai();
@@ -30,24 +35,28 @@ public class GameManager : MonoBehaviour
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
     public void GameOver()
     {
+        UIManager.instance.DesligaPainel();
         UIManager.instance.GameOverUI();
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
     public void AvisoTutorial()
     {
+        UIManager.instance.DesligaPainel(); 
         UIManager.instance.Tutorial();
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
     public void PassLevel()
     {
+        UIManager.instance.DesligaPainel();
         UIManager.instance.PassLevelUI();
     }
 
     //MÉTODO QUE CHAMA UM MÉTODO DE OUTRA CLASSE
     public void Pause()
     {
+        UIManager.instance.DesligaPainel();
         UIManager.instance.PauseUI();
     }
 }

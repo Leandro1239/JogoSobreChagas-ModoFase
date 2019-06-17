@@ -28,11 +28,13 @@ public class Somador : MonoBehaviour
         }
     }
 
+    //SOMA 1 NO MÉTODO 'Jogou' DO CONTADOR, APLICADO NO BOTÃO DE PLAY E DE RESET PARA CONTAR JOGADAS
     public void SomaJogou()
     {
         Contador.instance.Jogou(1);
     }
 
+    //ATUALIZA OS VALORES DOS RECORDES NOS TEXTOS DE MENU
     public void Recorde()
     {
         UIManager.instance.AtualizaTXT();

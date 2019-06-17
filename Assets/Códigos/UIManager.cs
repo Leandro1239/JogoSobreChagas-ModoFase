@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += Carrega;
     }
 
+    //PEGA AS STRINGS, DÁ FORMATO PARA ELAS E COLOCA ELAS NO TEXTO PARA SER MOSTRADO NO MENU
     public void AtualizaTXT()
     {
         Coleta_Total = string .Format("{0}", Contador.instance.AcaiTotal);
@@ -38,10 +39,10 @@ public class UIManager : MonoBehaviour
         PT.text = Play_Total;
     }
 
-    //CARREGA SEMPRE NO INICIO
+    //CARREGA SEMPRE NO INICIO, ENCONTRA OS PAINEIS SOZINHO
     public void Carrega (Scene cena, LoadSceneMode modo)
     {
-        LigaDesligaPainel();
+        DesligaPainel();
         PainelLose = GameObject.Find("Panel - Lose");
         PainelWin = GameObject.Find("Panel - Win");
         PainelPause = GameObject.Find("Panel - Pause");
@@ -52,9 +53,6 @@ public class UIManager : MonoBehaviour
     public void GameOverUI()
     {
         PainelLose.SetActive(true);
-        PainelWin.SetActive(false);
-        PainelPause.SetActive(false);
-        PainelTutorial.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -62,9 +60,6 @@ public class UIManager : MonoBehaviour
     public void PassLevelUI()
     {
         PainelWin.SetActive(true);
-        PainelLose.SetActive(false);
-        PainelPause.SetActive(false);
-        PainelTutorial.SetActive(false);
         Time.timeScale = 0;
     }
 
@@ -72,33 +67,25 @@ public class UIManager : MonoBehaviour
     public void PauseUI()
     {
         PainelPause.SetActive(true);
-        PainelLose.SetActive(false);
-        PainelWin.SetActive(false);
-        PainelTutorial.SetActive(false);
         Time.timeScale = 0;
     }
 
+    // ATIVA PAINEL DE TUTORIAL E PAUSA
     public void Tutorial()
     {
         PainelTutorial.SetActive(true);
-        PainelLose.SetActive(false);
-        PainelWin.SetActive(false);
-        PainelPause.SetActive(false);
         Time.timeScale = 0;
     }
 
     // DESATIVA PAINEL DE PAUSE E CONTINUA
     public void ContinueUI()
     {
-        PainelLose.SetActive(false);
-        PainelWin.SetActive(false);
-        PainelPause.SetActive(false);
-        PainelTutorial.SetActive(false);
         Time.timeScale = 1;
     }
 
+    // MÉTODO QUE DESLIGA TODOS OS PAINEIS, LIMPA TELA
     // CHAMA UMA FUNÇÃO PARA DESATIVAR OS PAINEIS 
-    public void LigaDesligaPainel()
+    public void DesligaPainel()
     {
         StartCoroutine(Tempo());
     }

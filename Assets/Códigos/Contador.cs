@@ -7,12 +7,13 @@ public class Contador : MonoBehaviour
 {
     //VARIÁVEIS
     public static Contador instance;           //DEFINE A CLASSE COMO PUBLICA
-    public int AcaiTotal, PlayTotal;
+    public int AcaiTotal, PlayTotal = 0;
 
     //REALIZA ISSO LOGO AO INICIAR
+    //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
     void Awake()
     {
-        if (instance == null)                       //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
+        if (instance == null)                       
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -21,6 +22,18 @@ public class Contador : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    //COMPARA O VALOR DE VEZES JOGADAS PARA SE CASO FOR UMA VEZ MOSTRAR A TELA DE TUTORIAL
+    public void Update()
+    {
+        if (PlayTotal == 0)
+        {
+            GameManager.instance.AvisoTutorial();
+        }
+
+        // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES SALVOS DE AÇAI E DE JOGADAS
+        // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
     }
 
     //---- PARTE DE CONTAGEM DO AÇAI ----
