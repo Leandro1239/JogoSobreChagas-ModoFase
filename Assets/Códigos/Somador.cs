@@ -7,8 +7,10 @@ public class Somador : MonoBehaviour
 {
     //VARIÁVEIS
     public static Somador Instance;                              //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    public static int Total = 0, AcaiFase = 0;                      //AÇAI
-    public Text Coleta_Fase;                                        //TEXTO
+    public static int AcaiFase = 0;                      //AÇAI
+    public Text Coleta_Fase, CT, PT;
+    private string Coleta_Total, Play_Total;
+
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     void Awake()
@@ -37,6 +39,11 @@ public class Somador : MonoBehaviour
     //ATUALIZA OS VALORES DOS RECORDES NOS TEXTOS DE MENU
     public void Recorde()
     {
-        UIManager.instance.AtualizaTXT();
+        Coleta_Total = string.Format("{0}", Contador.instance.AcaiTotal);
+        CT = GameObject.Find("CQts_txt").GetComponent<Text>();
+        CT.text = Coleta_Total;
+        Play_Total = string.Format("{0}", Contador.instance.PlayTotal);
+        PT = GameObject.Find("PQts_txt").GetComponent<Text>();
+        PT.text = Play_Total;
     }
 }

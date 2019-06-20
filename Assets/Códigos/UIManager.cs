@@ -8,8 +8,6 @@ public class UIManager : MonoBehaviour
 {
     //VARIÁVEIS
     public static UIManager instance;                               //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    private string Coleta_Total, Play_Total;
-    private Text CT, PT;
     private GameObject PainelLose, PainelWin, PainelPause, PainelTutorial;
 
     //NÃO DESTROI O OBJETO
@@ -31,12 +29,7 @@ public class UIManager : MonoBehaviour
     //PEGA AS STRINGS, DÁ FORMATO PARA ELAS E COLOCA ELAS NO TEXTO PARA SER MOSTRADO NO MENU
     public void AtualizaTXT()
     {
-        Coleta_Total = string .Format("{0}", Contador.instance.AcaiTotal);
-        CT = GameObject.Find("CQts_txt").GetComponent<Text>();
-        CT.text = Coleta_Total;
-        Play_Total = string.Format("{0}", Contador.instance.PlayTotal);
-        PT = GameObject.Find("PQts_txt").GetComponent<Text>();
-        PT.text = Play_Total;
+
     }
 
     //CARREGA SEMPRE NO INICIO, ENCONTRA OS PAINEIS SOZINHO

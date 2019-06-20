@@ -3319,7 +3319,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &375574737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3710,8 +3710,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 392235882}
-        m_MethodName: Continue
+      - m_Target: {fileID: 790142677}
+        m_MethodName: DesligaPainel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 790142677}
+        m_MethodName: ContinueUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4898,7 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4936,9 +4947,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Jogou
-        m_Mode: 3
+      - m_Target: {fileID: 790142677}
+        m_MethodName: ContinueUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5592,7 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -6953,6 +6964,7 @@ GameObject:
   - component: {fileID: 790142672}
   - component: {fileID: 790142671}
   - component: {fileID: 790142670}
+  - component: {fileID: 790142677}
   m_Layer: 0
   m_Name: Jogador
   m_TagString: Player
@@ -6973,6 +6985,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Coleta_Fase: {fileID: 1811439950}
+  CT: {fileID: 0}
+  PT: {fileID: 0}
 --- !u!114 &790142671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7103,6 +7117,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &790142677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790142669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8cabb63af5db141b32a2d392112e30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PainelLose: {fileID: 1450232227}
+  PainelWin: {fileID: 375574736}
+  PainelPause: {fileID: 988674875}
+  PainelTutorial: {fileID: 2032267236}
 --- !u!1 &799062022
 GameObject:
   m_ObjectHideFlags: 0
@@ -8715,7 +8745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &988674876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10286,7 +10316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -10324,9 +10354,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Jogou
-        m_Mode: 3
+      - m_Target: {fileID: 790142677}
+        m_MethodName: ContinueUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11350,8 +11380,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 392235882}
-        m_MethodName: Pause
+      - m_Target: {fileID: 790142677}
+        m_MethodName: DesligaPainel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 790142677}
+        m_MethodName: PauseUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12262,7 +12303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1450232228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13925,7 +13966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -13952,8 +13993,19 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Continue
+      - m_Target: {fileID: 790142677}
+        m_MethodName: DesligaPainel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 790142677}
+        m_MethodName: ContinueUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14798,7 +14850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -15456,7 +15508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -17238,7 +17290,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2032267237
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17605,7 +17657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -18366,7 +18418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -18404,9 +18456,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: Jogou
-        m_Mode: 3
+      - m_Target: {fileID: 790142677}
+        m_MethodName: ContinueUI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -18467,6 +18519,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2039269123}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Offset.x
+      value: 0.039021015
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Offset.y
+      value: -0.14137745
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 15.263705
+      objectReference: {fileID: 0}
     - target: {fileID: 5701405857333242234, guid: 3ffb5cf6c03c6b54bb2da98760cf1810,
         type: 3}
       propertyPath: m_Name
@@ -18475,12 +18539,12 @@ PrefabInstance:
     - target: {fileID: 288699937387283476, guid: 3ffb5cf6c03c6b54bb2da98760cf1810,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.54
+      value: 10.05
       objectReference: {fileID: 0}
     - target: {fileID: 288699937387283476, guid: 3ffb5cf6c03c6b54bb2da98760cf1810,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5
+      value: 5.52
       objectReference: {fileID: 0}
     - target: {fileID: 288699937387283476, guid: 3ffb5cf6c03c6b54bb2da98760cf1810,
         type: 3}

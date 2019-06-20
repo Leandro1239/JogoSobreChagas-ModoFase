@@ -27,11 +27,6 @@ public class Contador : MonoBehaviour
     //COMPARA O VALOR DE VEZES JOGADAS PARA SE CASO FOR UMA VEZ MOSTRAR A TELA DE TUTORIAL
     public void Update()
     {
-        if (PlayTotal == 0)
-        {
-            GameManager.instance.AvisoTutorial();
-        }
-
         // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES SALVOS DE AÇAI E DE JOGADAS
         // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
     }

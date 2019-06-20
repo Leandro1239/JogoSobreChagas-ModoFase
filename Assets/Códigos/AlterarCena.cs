@@ -143,18 +143,5 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
         Somador.AcaiFase = 0;
         Contador.instance.Jogou(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Continue();
-    }
-
-    //CHAMA O PAINEL DE PAUSE
-    public void Pause()
-    {
-        UIManager.instance.PauseUI();
-    }
-
-    //CHAMA O PAINEL DE CONTINUE
-    public void Continue()
-    {
-        UIManager.instance.ContinueUI();
     }
 }

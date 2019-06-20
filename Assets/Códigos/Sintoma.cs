@@ -9,6 +9,7 @@ public class Sintoma : MonoBehaviour {
     public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
     public int ValorAtual = 30, Dano = 10, Energia = 10;                    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
+    public static int Morreu = 0;
 
     //COLISÃO COM INIMIGO
     public void OnCollisionEnter2D(Collision2D Dano)                        //TOMOU DANO
@@ -30,14 +31,6 @@ public class Sintoma : MonoBehaviour {
         }
     }
 
-    public void Update()
-    {
-       if (ValorAtual == 0)
-        {
-            GameManager.instance.GameOver();
-        }
-    }
-
     //MÉTODO QUE FAZ PERDER VIDA
     public void VidaPerde()                                 
     {
@@ -45,6 +38,10 @@ public class Sintoma : MonoBehaviour {
         {
             ValorAtual -= Dano;
             EstadoSaude();                                  //CHAMA O MÉTODO 'EstadoSaúde' PARA VALIDAR 
+        }
+        if (ValorAtual == 0)
+        {
+            Morreu = 1;
         }
     }
 

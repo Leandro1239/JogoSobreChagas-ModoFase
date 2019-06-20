@@ -3,7 +3,7 @@
 public class Nivel1 : MonoBehaviour
 {
     public static Nivel1 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
-    public static int AcaiDesseNivel;
+    public static int AcaiDesseNivel, Venceu1;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     void Awake()
@@ -24,7 +24,7 @@ public class Nivel1 : MonoBehaviour
         {
             if (AcaiDesseNivel >= 5)
             {
-                UIManager.instance.PassLevelUI();            //CHAMA O MENU DE PASSAR DE NÍVEL
+                Venceu1 = 1;
             }
         }
     }

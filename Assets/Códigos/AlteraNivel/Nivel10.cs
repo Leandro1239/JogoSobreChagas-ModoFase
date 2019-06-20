@@ -5,7 +5,7 @@ using UnityEngine;
 public class Nivel10 : MonoBehaviour
 {
     public static Nivel10 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
-    public static int AcaiDesseNivel;
+    public static int AcaiDesseNivel, Venceu10;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     void Awake()
@@ -26,7 +26,7 @@ public class Nivel10 : MonoBehaviour
         {
             if (AcaiDesseNivel >= 30)
             {
-                UIManager.instance.PassLevelUI();            //CHAMA O MENU DE PASSAR DE NÍVEL
+                Venceu10 = 1;
             }
         }
     }
