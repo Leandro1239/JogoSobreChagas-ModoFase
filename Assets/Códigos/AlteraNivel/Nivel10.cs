@@ -6,6 +6,7 @@ public class Nivel10 : MonoBehaviour
 {
     public static Nivel10 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
     public static int AcaiDesseNivel, Venceu10;
+    public static bool Passou10 = false;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     void Awake()
@@ -27,6 +28,7 @@ public class Nivel10 : MonoBehaviour
             if (AcaiDesseNivel >= 30)
             {
                 Venceu10 = 1;
+                Passou10 = true;
             }
         }
     }
