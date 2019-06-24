@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     //VARIÁVEIS
     public static GameManager instance;                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
 
+
     //REALIZA ISSO LOGO AO INICIAR
     void Awake()    
     {

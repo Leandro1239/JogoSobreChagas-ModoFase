@@ -10,6 +10,7 @@ public class Movimentacao : MonoBehaviour {
     public RawImage rImg;                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
     private int forcapulo = 200, velocidade = 7, direcao = 0;           //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
     private bool olhandodireita = true, pisandochao = false;            //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
+    public static int PulaSom = 0;
 
     //REALIZA ISSO LOGO AO INICIAR
     void Start()                                               
@@ -72,6 +73,7 @@ public class Movimentacao : MonoBehaviour {
     {
         if (pisandochao)                            
         {
+            PulaSom += 1; 
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
         }
