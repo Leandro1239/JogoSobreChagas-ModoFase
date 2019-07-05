@@ -8,7 +8,8 @@ public class Somador : MonoBehaviour
     //VARIÁVEIS
     public static Somador Instance;                              //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     public static int AcaiFase = 0, ContaSom = 0;                      //AÇAI
-    public Text Coleta_Fase, CT, PT;
+    public Text Coleta_Fase;
+    Text CT, PT;
     private string Coleta_Total, Play_Total;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
