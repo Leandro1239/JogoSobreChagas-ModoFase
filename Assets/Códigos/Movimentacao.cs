@@ -82,14 +82,27 @@ public class Movimentacao : MonoBehaviour {
     }
 
     //SAI DO CHÃO
-    public void Pula()                                           
+    public void Pula()
     {
-        if (pisandochao)                            
+        // PULA PARADO
+        if (direcao == 0 && pisandochao == true)
         {
             anime.SetBool("Idle", false);
             anime.SetBool("Jump", true);
             anime.SetBool("Hit", false);
-            PulaSom += 1; 
+            PulaSom += 1;
+            player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
+            pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
+        }
+
+        // PULA CORRENDO
+        if (direcao == 1 || direcao == -1 && pisandochao == true)
+        {
+            anime.SetBool("Idle", false);
+            anime.SetBool("Run", false);
+            anime.SetBool("Jump", true);
+            anime.SetBool("Hit", false);
+            PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
         }
