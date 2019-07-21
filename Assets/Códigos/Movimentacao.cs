@@ -33,6 +33,13 @@ public class Movimentacao : MonoBehaviour {
         {
             Pula();
         }
+
+    // Controla animação de correr
+        if (direcao != 0 && pisandochao == true)
+        {
+            anime.SetBool("Idle", false);
+            anime.SetBool("Run", true);
+        }
     }
 
     //FUNÇÃO QUE VIRA PARA O OUTRO LADO
@@ -47,29 +54,21 @@ public class Movimentacao : MonoBehaviour {
     //MÉTODO QUE VIRA PRO LADO
     public void Direita()                                       
     {
-        anime.SetBool("Idle", false);
-        anime.SetBool("Run", true);
-        anime.SetBool("Hit", false);
         direcao = 1;                                            //ATRIBUI VALOR POSITIVO PARA ANDAR NO EIXO X
         if (direcao > 0 && olhandodireita == false)
         { 
             Flip();                                             //VERIFICA SE ESTÁ ANDANDO NA DIREÇÃO DO EIXO POSITIVO
         }
-
     }
 
     //MÉTODO QUE VIRA PRO LADO
     public void Esquerda()                                      
     {
-        anime.SetBool("Idle", false);
-        anime.SetBool("Run", true);
-        anime.SetBool("Hit", false);
         direcao = -1;                                           //ATRIBUI VALOR NEGATIVO PARA ANDAR NO EIXO X
         if (direcao < 0 && olhandodireita == true)
         {
             Flip();                                             //VERIFICA SE ESTÁ ANDANDO NA DIREÇÃO DO EIXO NEGATIVO
         }
-
     }
 
     //PARA DE ANDAR
@@ -77,7 +76,6 @@ public class Movimentacao : MonoBehaviour {
     {
         anime.SetBool("Idle", true);
         anime.SetBool("Run", false);
-        anime.SetBool("Hit", false);
         direcao = 0;                                            //PARADO NO EIXO X
     }
 
@@ -89,7 +87,6 @@ public class Movimentacao : MonoBehaviour {
         {
             anime.SetBool("Idle", false);
             anime.SetBool("Jump", true);
-            anime.SetBool("Hit", false);
             PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
@@ -101,7 +98,6 @@ public class Movimentacao : MonoBehaviour {
             anime.SetBool("Idle", false);
             anime.SetBool("Run", false);
             anime.SetBool("Jump", true);
-            anime.SetBool("Hit", false);
             PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
@@ -113,9 +109,8 @@ public class Movimentacao : MonoBehaviour {
     {
         if (Chao.gameObject.CompareTag("Chao"))
         {
-            anime.SetBool("Jump", false);
             anime.SetBool("Idle", true);
-            anime.SetBool("Hit", false);
+            anime.SetBool("Jump", false);
             pisandochao = true;                                 //SE ´TA TOCANDO NO CHÃO, PULO LIBERADO
         }
     }
