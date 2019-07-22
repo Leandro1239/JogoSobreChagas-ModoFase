@@ -85,6 +85,7 @@ public class Movimentacao : MonoBehaviour {
         // PULA PARADO
         if (direcao == 0 && pisandochao == true)
         {
+            anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Jump", true);
             PulaSom += 1;
@@ -93,8 +94,9 @@ public class Movimentacao : MonoBehaviour {
         }
 
         // PULA CORRENDO
-        if (direcao == 1 || direcao == -1 && pisandochao == true)
+        if (direcao != 0 && pisandochao == true)
         {
+            anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Run", false);
             anime.SetBool("Jump", true);
@@ -109,6 +111,7 @@ public class Movimentacao : MonoBehaviour {
     {
         if (Chao.gameObject.CompareTag("Chao"))
         {
+            anime.SetBool("Hit", false);
             anime.SetBool("Idle", true);
             anime.SetBool("Jump", false);
             pisandochao = true;                                 //SE ´TA TOCANDO NO CHÃO, PULO LIBERADO

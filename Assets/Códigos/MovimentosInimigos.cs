@@ -6,14 +6,13 @@ public class MovimentosInimigos : MonoBehaviour
     //VARIÁVEIS
     private float velMove = 3f;
     private Rigidbody2D rb;
-    private bool moveE;
+    private bool moveE = true;
     public Transform limite;
     
     //INICIA
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        moveE = true;
         Physics2D.IgnoreLayerCollision(9, 9);                   //IGNORA COLISÃO ENTRE OBJETOS COM MESMA LAYER
     }
 
@@ -35,7 +34,15 @@ public class MovimentosInimigos : MonoBehaviour
     // VERIFICA SE TEM CHÃO, SE NÃO TIVER ELE VIRA
     void VerificaChao()
     {
-        if (!Physics2D.Raycast(limite.position, Vector2.down, 0.1f))
+        if (!Physics2D.Raycast(limite.position, Vector2.down, 2f))
+        {
+            Flip();
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D Volta)
+    {
+        if (Volta.gameObject.CompareTag("Barreira"))
         {
             Flip();
         }

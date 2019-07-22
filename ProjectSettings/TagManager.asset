@@ -9,6 +9,7 @@ TagManager:
   - Inimigo
   - Vida
   - Saida
+  - Barreira
   layers:
   - Default
   - TransparentFX

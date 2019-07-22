@@ -22,9 +22,6 @@ public class Sintoma : MonoBehaviour {
     {
         if (Dano.gameObject.CompareTag("Inimigo"))              
         {
-            anime.SetBool("Idle", false);
-            anime.SetBool("Run", false);
-            anime.SetBool("Jump", false);
             anime.SetBool("Hit", true);
             DorSom += 1;
             Destroy(Dano.gameObject);                       //DESTROI O INIMIGO QUANDO TOCA
