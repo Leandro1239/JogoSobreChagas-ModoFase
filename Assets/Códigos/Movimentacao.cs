@@ -1,15 +1,16 @@
 ﻿// BIBLIOTECAS
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 // TRATA A MOVIMENTAÇÃO DO PERSONAGEM
 public class Movimentacao : MonoBehaviour {
 
     //VARIÁVEIS
-    public Rigidbody2D player;                                          //JOGADOR
-    public RawImage rImg;                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
-    private int forcapulo = 100, velocidade = 7, direcao = 0;           //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
-    public bool olhandodireita = true, pisandochao = false;            //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
+    public Rigidbody2D player;                                                          //JOGADOR
+    public RawImage rImg;                                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
+    public int forcapulo = 100, velocidade = 7, direcao = 0, controle = 2;             //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
+    public bool olhandodireita = true, pisandochao = false;                             //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
     public static int PulaSom = 0;
     public Animator anime;
 
@@ -24,11 +25,11 @@ public class Movimentacao : MonoBehaviour {
     void Update()
     {
         Rect temp = new Rect(rImg.uvRect);          //RAW IMG                                    
-        temp.x += direcao * 0.003f;                 //VELOCIDADE
+        temp.x += 1.001f + (1.005f * direcao);                 //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
         rImg.uvRect = temp;
         transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
-    
-    //CONTROLANDO PELO TECLADO PARA TESTES
+
+        //CONTROLANDO PELO TECLADO PARA TESTES
         if (Input.GetKey(KeyCode.Space))
         {
             Pula();
@@ -90,7 +91,7 @@ public class Movimentacao : MonoBehaviour {
             anime.SetBool("Jump", true);
             PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
-            pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
+            pisandochao = false;
         }
 
         // PULA CORRENDO
@@ -102,8 +103,16 @@ public class Movimentacao : MonoBehaviour {
             anime.SetBool("Jump", true);
             PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
-            pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
+            pisandochao = false;
         }
+
+        //CONTROLA 2 PULOS SEGUIDOS
+
+        /*controle -= 1;
+        if (controle == 0)
+        {
+            pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
+        }*/
     }
 
     //COMPARA TAG COM O CHÃO
@@ -111,6 +120,7 @@ public class Movimentacao : MonoBehaviour {
     {
         if (Chao.gameObject.CompareTag("Chao"))
         {
+            controle = 2;
             anime.SetBool("Hit", false);
             anime.SetBool("Idle", true);
             anime.SetBool("Jump", false);
