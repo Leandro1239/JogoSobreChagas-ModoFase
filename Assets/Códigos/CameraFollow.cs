@@ -3,11 +3,11 @@
 public class CameraFollow : MonoBehaviour 
 {
     public Transform player;
-    public float distanciaCamera = 30f;
+    //public float distanciaCamera = 30f;
 
     private void Awake()
     {
-        GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height/1.3f)/distanciaCamera);
+        //GetComponent<UnityEngine.Camera>().orthographicSize = ((Screen.height/1.3f)/distanciaCamera);
     }
 
     void FixedUpdate()

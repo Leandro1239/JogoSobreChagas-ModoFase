@@ -5,7 +5,7 @@ public class ControlaSons : MonoBehaviour
     public static ControlaSons Instance;
     public AudioSource Musica, Coleta, Dor, Pulo;
     private int Coletou, ContadorSom, Doeu, DorSom, Pulou, PulouSom;
-    private float VolumeMusica = 1f, VolumeSom = 1f;
+    private float Volume = 1f;
 
     private void Start()
     {
@@ -17,8 +17,10 @@ public class ControlaSons : MonoBehaviour
 
     void Update()
     {
-        Musica.volume = VolumeMusica;
-        Coleta.volume = VolumeSom;
+        Musica.volume = Volume;
+        Coleta.volume = Volume;
+        Dor.volume = Volume;
+        Pulo.volume = Volume;
 
         ContadorSom = Somador.ContaSom;
         DorSom = Sintoma.DorSom;
@@ -46,35 +48,28 @@ public class ControlaSons : MonoBehaviour
     public void PausePlayMusica()
     {
         Musica = GetComponent<AudioSource>();
+        Coleta = GetComponent<AudioSource>();
+        Dor = GetComponent<AudioSource>();
+        Pulo = GetComponent<AudioSource>();
+
         if (Musica.isPlaying)
         {
             Musica.Pause();
+            Coleta.Pause();
+            Dor.Pause();
+            Pulo.Pause();
         }
         else
         {
             Musica.Play();
-        }
-    }
-
-    public void PausePlaySom()
-    {
-        if (Coleta.isPlaying)
-        {
-            Coleta.Pause();
-        }
-        else
-        {
             Coleta.Play();
-        } 
+            Dor.Play();
+            Pulo.Play();
+        }
     }
 
-    public void SetVolumeMusica (float vol)
+    public void SetVolume (float vol)
     {
-        VolumeMusica = vol;
-    }
-
-    public void SetVolumeSom (float volsom)
-    {
-        VolumeSom = volsom;
+        Volume = vol;
     }
 }

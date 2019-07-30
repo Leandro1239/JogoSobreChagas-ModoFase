@@ -8,8 +8,9 @@ public class Sintoma : MonoBehaviour {
     //VARIÁVEIS
     public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
-    int ValorAtual = 3, Dano = 1, Energia = 1;                    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
+    int ValorAtual = 3, Dano = 1, Energia = 1;                              //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
     public static int Morreu = 0, DorSom = 0;
+    public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
     public Animator anime;
 
     public void Start()
@@ -50,6 +51,9 @@ public class Sintoma : MonoBehaviour {
         if (ValorAtual == 0)
         {
             Morreu = 1;
+            Cora1.fillAmount = 0;
+            Cora2.fillAmount = 0;
+            Cora3.fillAmount = 0;
         }
     }
 
@@ -69,16 +73,25 @@ public class Sintoma : MonoBehaviour {
         if (ValorAtual == 3)
         {
             Saude.text = "Saudável";
+            Cora1.fillAmount = 1;
+            Cora2.fillAmount = 1;
+            Cora3.fillAmount = 1;
         }
 
         if (ValorAtual == 2)
         {
             Saude.text = "Doente";
+            Cora1.fillAmount = 1;
+            Cora2.fillAmount = 1;
+            Cora3.fillAmount = 0;
         }
 
         if (ValorAtual == 1)
         {
             Saude.text = "Muito Doente";
+            Cora1.fillAmount = 1;
+            Cora2.fillAmount = 0;
+            Cora3.fillAmount = 0;
         }
     }
 }
