@@ -9,10 +9,18 @@ public class Movimentacao : MonoBehaviour {
     //VARIÁVEIS
     public Rigidbody2D player;                                                          //JOGADOR
     public RawImage rImg;                                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
-    public int forcapulo = 100, velocidade = 7, direcao = 0, controle = 2;             //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
-    public bool olhandodireita = true, pisandochao = false;                             //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
-    public static int PulaSom = 0;
-    public Animator anime;
+    private int forcapulo = 100, velocidade = 7, direcao = 0;                          //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
+    private bool olhandodireita = true;                                            //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
+    public static int PulaSom = 0;      
+
+    // GAME OBJECT QUE CHECA O CHÃO
+    public bool noChao = false;
+    public Transform checaChao;
+    private float raioChao = 0.4f;
+    public LayerMask oChao;
+
+    // ANIMAÇÃO
+    private Animator anime;
 
     //REALIZA ISSO LOGO AO INICIAR
     void Start()                                               
@@ -28,18 +36,30 @@ public class Movimentacao : MonoBehaviour {
         temp.x += 1.001f + (1.005f * direcao);                 //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
         rImg.uvRect = temp;
         transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
+        noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);
 
         //CONTROLANDO PELO TECLADO PARA TESTES
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Pula();
         }
 
-    // Controla animação de correr
-        if (direcao != 0 && pisandochao == true)
+        // Controla animação de correr
+        if (direcao != 0 && noChao)
         {
             anime.SetBool("Idle", false);
             anime.SetBool("Run", true);
+            anime.SetBool("Jump", false);
+            anime.SetBool("Hit", false);
+        }
+
+        // ANIMAÇÃO PARA PARAR DE PULAR
+        if (direcao == 0 && noChao)
+        {
+            anime.SetBool("Run", false);
+            anime.SetBool("Idle", true);
+            anime.SetBool("Hit", false);
+            anime.SetBool("Jump", false);
         }
     }
 
@@ -84,47 +104,26 @@ public class Movimentacao : MonoBehaviour {
     public void Pula()
     {
         // PULA PARADO
-        if (direcao == 0 && pisandochao == true)
+        if (direcao == 0 && noChao == true)
         {
             anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Jump", true);
             PulaSom += 1;
-            player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
-            pisandochao = false;
+            player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
+            noChao = false;
         }
 
         // PULA CORRENDO
-        if (direcao != 0 && pisandochao == true)
+        if (direcao != 0 && noChao == true)
         {
             anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Run", false);
             anime.SetBool("Jump", true);
             PulaSom += 1;
-            player.AddForce(new Vector2(0, forcapulo));         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
-            pisandochao = false;
-        }
-
-        //CONTROLA 2 PULOS SEGUIDOS
-
-        /*controle -= 1;
-        if (controle == 0)
-        {
-            pisandochao = false;                                //SE PULOU, NÃO PDOE PULAR DE NOVO
-        }*/
-    }
-
-    //COMPARA TAG COM O CHÃO
-    public void OnCollisionEnter2D(Collision2D Chao)            
-    {
-        if (Chao.gameObject.CompareTag("Chao"))
-        {
-            controle = 2;
-            anime.SetBool("Hit", false);
-            anime.SetBool("Idle", true);
-            anime.SetBool("Jump", false);
-            pisandochao = true;                                 //SE ´TA TOCANDO NO CHÃO, PULO LIBERADO
+            player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
+            noChao = false;
         }
     }
 }     

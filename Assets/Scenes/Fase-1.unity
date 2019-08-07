@@ -1755,6 +1755,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377023119}
   m_CullTransparentMesh: 0
+--- !u!1 &383378055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 383378056}
+  m_Layer: 10
+  m_Name: "ChecaCh\xE3o"
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &383378056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383378055}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.351, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 790142676}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &392235877
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,7 +4408,7 @@ GameObject:
   - component: {fileID: 790142677}
   - component: {fileID: 790142672}
   - component: {fileID: 790142678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Jogador
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4429,13 +4459,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 790142673}
   rImg: {fileID: 1576952473}
-  forcapulo: 100
-  velocidade: 7
-  direcao: 0
-  controle: 2
-  olhandodireita: 1
-  pisandochao: 0
-  anime: {fileID: 790142678}
+  noChao: 0
+  checaChao: {fileID: 383378056}
+  oChao:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!50 &790142673
 Rigidbody2D:
   serializedVersion: 4
@@ -4448,10 +4476,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.06
+  m_Mass: 2.4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 11
+  m_GravityScale: 15
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -4529,9 +4557,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790142669}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.145, y: 3.03, z: 57}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
-  m_Children: []
+  m_LocalPosition: {x: 10.19, y: 3.36, z: 57}
+  m_LocalScale: {x: 1.6, y: 1.65, z: 1}
+  m_Children:
+  - {fileID: 383378056}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5034,7 +5063,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901298989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: 7, z: -10}
+  m_LocalPosition: {x: 9.03, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 737196672}
@@ -8958,7 +8987,7 @@ GameObject:
   - component: {fileID: 1617815048}
   - component: {fileID: 1617815050}
   - component: {fileID: 1617815049}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tilemap
   m_TagString: Chao
   m_Icon: {fileID: 0}
