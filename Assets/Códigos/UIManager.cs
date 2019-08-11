@@ -26,12 +26,7 @@ public class UIManager : MonoBehaviour
         SceneManager.sceneLoaded += Carrega;
     }
 
-    //PEGA AS STRINGS, DÁ FORMATO PARA ELAS E COLOCA ELAS NO TEXTO PARA SER MOSTRADO NO MENU
-    public void AtualizaTXT()
-    {
-
-    }
-
+    // ========================= ENCONTRA PAINEIS ======================== \\
     //CARREGA SEMPRE NO INICIO, ENCONTRA OS PAINEIS SOZINHO
     public void Carrega (Scene cena, LoadSceneMode modo)
     {
@@ -42,6 +37,7 @@ public class UIManager : MonoBehaviour
         PainelTutorial = GameObject.Find("Panel - Tutorial");
     }
 
+    // ============================= PAINEIS ============================== \\
     // ATIVA PAINEL DE LOSE E PAUSA O TEMPO
     public void GameOverUI()
     {
@@ -76,14 +72,13 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
+    // ========================= CONTROLE DE PAINEIS ========================= \\
     // MÉTODO QUE DESLIGA TODOS OS PAINEIS, LIMPA TELA
-    // CHAMA UMA FUNÇÃO PARA DESATIVAR OS PAINEIS 
     public void DesligaPainel()
     {
         StartCoroutine(Tempo());
     }
 
-    // FAZ COM QUE O CÓDIGO ACHE OS PAINEIS
     IEnumerator Tempo()
     {
         yield return new WaitForSeconds(0.01f);

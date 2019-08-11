@@ -2,14 +2,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 // FAZ MÉTODOS DE TROCAR DE CENÁRIO
-public class AlterarCena : MonoBehaviour {            //Troca de cenário de acordo com o número somado
-
+public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o número somado
+{            
     public static AlterarCena instance;
-
-    // VOLTAR
-
-    public void Voltar()
+    
+    // ========================== VOLTAR ================================== \\
+     public void Voltar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         Time.timeScale = 1;
@@ -68,8 +68,8 @@ public class AlterarCena : MonoBehaviour {            //Troca de cenário de aco
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 10);
         Time.timeScale = 1;
     }
-    // AVANÇAR
-
+    
+    // ========================== AVANÇAR ================================== \\
     public void Avançar1()
     {
         Somador.AcaiFase = 0;

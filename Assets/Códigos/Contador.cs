@@ -9,10 +9,12 @@ public class Contador : MonoBehaviour
     public static Contador instance;           //DEFINE A CLASSE COMO PUBLICA
     public int AcaiTotal, PlayTotal = 0;
 
-    //REALIZA ISSO LOGO AO INICIAR
     //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
     void Awake()
     {
+        AtualizaAcai();
+        AtualizaPlay(); 
+        
         if (instance == null)                       
         {
             instance = this;
@@ -24,14 +26,13 @@ public class Contador : MonoBehaviour
         }
     }
     
-    //COMPARA O VALOR DE VEZES JOGADAS PARA SE CASO FOR UMA VEZ MOSTRAR A TELA DE TUTORIAL
     public void Update()
     {
         // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES SALVOS DE AÇAI E DE JOGADAS
         // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
     }
 
-    //---- PARTE DE CONTAGEM DO AÇAI ----
+    //========================== CONTAGEM DO AÇAI ============================ \\
     //Coletado É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
     public void PegouAcai(int Coletado)
     {
@@ -59,7 +60,7 @@ public class Contador : MonoBehaviour
         }
     }
 
-    //----PARTE DE CONTAGEM DE JOGADAS----
+    // ========================== CONTAGEM DE JOGADAS ======================= \\
     //CALCULA A QUANTIDADE DE VEZES QUE JOGOU
     public void Jogou(int ClicouPlay)
     {

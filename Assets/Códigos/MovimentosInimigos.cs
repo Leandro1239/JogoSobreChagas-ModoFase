@@ -40,6 +40,7 @@ public class MovimentosInimigos : MonoBehaviour
         }
     }
 
+    // VERIFICA SE TEM BARREIRA
     public void OnCollisionEnter2D(Collision2D Volta)
     {
         if (Volta.gameObject.CompareTag("Barreira"))

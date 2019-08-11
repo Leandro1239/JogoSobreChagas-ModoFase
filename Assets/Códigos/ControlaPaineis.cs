@@ -1,13 +1,13 @@
-﻿// BIBLIOTECAS
+﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class ControlaPainel : MonoBehaviour
+public class ControlaPaineis : MonoBehaviour
 {
-    // VARIÁVEIS
-    public static ControlaPainel instance;
-    public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial;           //PAINEIS
-    private int Controle = 0;                                                       //CONTROLE DO PAINEI DE TUTORIAL, FAZENDO ATIVAR SÓ UMA VEZ
-
+    public static ControlaPaineis instance;
+    public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial; 
+    private int Controle = 0; // PARA PRIMEIRA VEZ NO JOGO  
+    
+    // ============================== REPETIÇÃO ============================ \\
     public void Update()
     {
         // VERIFICA SE É A PRIMEIRA VEZ QUE É JOGADO, PARA ATIVAR O TUTORIAL E ATIVA O CONTROLE PARA NUNCA MAIS ENTRAR NESSA CONDIÇÃO
@@ -36,9 +36,9 @@ public class ControlaPainel : MonoBehaviour
             Nivel1.Venceu1 = 0; Nivel2.Venceu2 = 0; Nivel3.Venceu3 = 0; Nivel4.Venceu4 = 0; Nivel5.Venceu5 = 0;
             Nivel6.Venceu6 = 0; Nivel7.Venceu7 = 0; Nivel8.Venceu8 = 0; Nivel9.Venceu9 = 0; Nivel10.Venceu10 = 0;
         }
-    } 
+    }
 
-    // MÉTODO QUE DESLIGA TODOS OS PAINEIS, LIMPA TELA
+    // ========================= MÉTODOS DOS PAINEIS ======================== \\
     // CHAMA UMA FUNÇÃO PARA DESATIVAR OS PAINEIS 
     public void DesligaPainel()
     {

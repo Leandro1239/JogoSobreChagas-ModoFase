@@ -9,7 +9,7 @@ public class Sintoma : MonoBehaviour {
     public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
     int ValorAtual = 3, Dano = 1, Energia = 1;                              //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
-    public static int Morreu = 0, DorSom = 0;
+    public static int Morreu = 0;
     public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
     public Animator anime;
 
@@ -18,13 +18,14 @@ public class Sintoma : MonoBehaviour {
         anime = GetComponent<Animator>();
     }
 
+    // ============================ COLISÕES ================================= \\
     //COLISÃO COM INIMIGO
     public void OnCollisionEnter2D(Collision2D Dano)                        //TOMOU DANO
     {
         if (Dano.gameObject.CompareTag("Inimigo"))              
         {
             anime.SetBool("Hit", true);
-            DorSom += 1;
+            GameManager.instance.PlaySom(1);              // Gerenciador de Áudio
             Destroy(Dano.gameObject);                       //DESTROI O INIMIGO QUANDO TOCA
             VidaPerde();                                    //CHAMA O METODO 'VidaPerde'
         }
@@ -40,6 +41,7 @@ public class Sintoma : MonoBehaviour {
         }
     }
 
+    // ========================= GERENCIA DE VIDA ========================== \\
     //MÉTODO QUE FAZ PERDER VIDA
     public void VidaPerde()                                 
     {
@@ -67,6 +69,7 @@ public class Sintoma : MonoBehaviour {
         }
     }
 
+    // ========================== ESCREVE NA TELA =========================== \\
     //MÉTODO QUE VERIFICA O ESTADO DE SAÚDE PARA ESCREVER NA TELA
     public void EstadoSaude()                               //DIFINE TODOS OS ESTADOS E O QUE ACONTECE NELES
     {

@@ -10,8 +10,7 @@ public class Movimentacao : MonoBehaviour {
     public Rigidbody2D player;                                                          //JOGADOR
     public RawImage rImg;                                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
     private int forcapulo = 100, velocidade = 7, direcao = 0;                          //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
-    private bool olhandodireita = true;                                            //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO
-    public static int PulaSom = 0;      
+    private bool olhandodireita = true;                                            //VERIFICA ORIENTAÇÃO, VERIFICA SE ESTÁ NO CHÃO     
 
     // GAME OBJECT QUE CHECA O CHÃO
     public bool noChao = false;
@@ -24,7 +23,7 @@ public class Movimentacao : MonoBehaviour {
 
     //REALIZA ISSO LOGO AO INICIAR
     void Start()                                               
-    {
+    {   
         player = gameObject.GetComponent<Rigidbody2D>();
         anime = GetComponent<Animator>();
     }
@@ -32,11 +31,11 @@ public class Movimentacao : MonoBehaviour {
     //MÉTODO QUE REPETE SEMPRE
     void Update()
     {
-        Rect temp = new Rect(rImg.uvRect);          //RAW IMG                                    
-        temp.x += 1.001f + (1.005f * direcao);                 //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
+        Rect temp = new Rect(rImg.uvRect);                  //RAW IMG                                    
+        temp.x += 1.001f + (1.005f * direcao);              //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
         rImg.uvRect = temp;
         transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
-        noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);
+        noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);                  // DEFINE O TAMANHO DO RAIO DO 'CHECACHAO'
 
         //CONTROLANDO PELO TECLADO PARA TESTES
         if (Input.GetKeyDown(KeyCode.Space))
@@ -44,13 +43,13 @@ public class Movimentacao : MonoBehaviour {
             Pula();
         }
 
-        // Controla animação de correr
+        // ======================== ANIMAÇÃO DE CORRER ====================== \\
+        // CORRENDO
         if (direcao != 0 && noChao)
         {
             anime.SetBool("Idle", false);
             anime.SetBool("Run", true);
             anime.SetBool("Jump", false);
-            anime.SetBool("Hit", false);
         }
 
         // ANIMAÇÃO PARA PARAR DE PULAR
@@ -58,12 +57,12 @@ public class Movimentacao : MonoBehaviour {
         {
             anime.SetBool("Run", false);
             anime.SetBool("Idle", true);
-            anime.SetBool("Hit", false);
             anime.SetBool("Jump", false);
         }
     }
 
-    //FUNÇÃO QUE VIRA PARA O OUTRO LADO
+    // ====================== FUNÇÕES DE MOVIMENTO ========================== \\
+    // GIRA O PERSONAGEM
     void Flip()                                                 
     {
         olhandodireita = !olhandodireita;                       //INVERTE A ORIENTAÇÃO
@@ -72,7 +71,7 @@ public class Movimentacao : MonoBehaviour {
         transform.localScale = theScale;                        //VALIDA
     }
 
-    //MÉTODO QUE VIRA PRO LADO
+    //VIRA PARA A DIREITA
     public void Direita()                                       
     {
         direcao = 1;                                            //ATRIBUI VALOR POSITIVO PARA ANDAR NO EIXO X
@@ -82,7 +81,7 @@ public class Movimentacao : MonoBehaviour {
         }
     }
 
-    //MÉTODO QUE VIRA PRO LADO
+    //VIRA PARA A ESQUERDA
     public void Esquerda()                                      
     {
         direcao = -1;                                           //ATRIBUI VALOR NEGATIVO PARA ANDAR NO EIXO X
@@ -106,10 +105,10 @@ public class Movimentacao : MonoBehaviour {
         // PULA PARADO
         if (direcao == 0 && noChao == true)
         {
+            GameManager.instance.PlaySom(2);                // Gerenciador de Áudio
             anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Jump", true);
-            PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             noChao = false;
         }
@@ -117,13 +116,13 @@ public class Movimentacao : MonoBehaviour {
         // PULA CORRENDO
         if (direcao != 0 && noChao == true)
         {
+            GameManager.instance.PlaySom(2);                   // Gerenciador de Áudio
             anime.SetBool("Hit", false);
             anime.SetBool("Idle", false);
             anime.SetBool("Run", false);
             anime.SetBool("Jump", true);
-            PulaSom += 1;
             player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             noChao = false;
         }
     }
-}     
+}

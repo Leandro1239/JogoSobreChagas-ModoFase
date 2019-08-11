@@ -7,9 +7,9 @@ public class Somador : MonoBehaviour
 {
     //VARIÁVEIS
     public static Somador Instance;                              //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    public static int AcaiFase = 0, ContaSom = 0;                      //AÇAI
+    public static int AcaiFase = 0;                              //AÇAI
     public Text Coleta_Fase;
-    Text CT, PT;
+    private Text CT, PT;
     private string Coleta_Total, Play_Total;
 
     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
@@ -23,7 +23,7 @@ public class Somador : MonoBehaviour
     {
         if (Coletar.gameObject.CompareTag("Coletor"))
         {
-            ContaSom += 1;
+            GameManager.instance.PlaySom(0);                      // ATIVA O GERENCIADOR DE ÁUDIO
             Contador.instance.PegouAcai(1);                             //CHAMA O METODO 'PegouAcai' DA CLASSE 'ColectManager' E CONTA +1 EM SEU ARGUMENTO, ACUMULANDO PARA O TOTAL RESGATADO
             Destroy(Coletar.gameObject);                                //DESTROI O "Coletor", QUE É A TAG DO ACAI
             AcaiFase += 1;                                              //CONTA O AÇAI OBTIDO NA FASE
