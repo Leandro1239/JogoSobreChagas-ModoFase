@@ -15,6 +15,9 @@ public class Contador : MonoBehaviour
         AtualizaAcai();
         AtualizaPlay(); 
         
+        // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES
+        // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
+        
         if (instance == null)                       
         {
             instance = this;
@@ -24,12 +27,6 @@ public class Contador : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    
-    public void Update()
-    {
-        // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES SALVOS DE AÇAI E DE JOGADAS
-        // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
     }
 
     //========================== CONTAGEM DO AÇAI ============================ \\

@@ -4,18 +4,34 @@ using UnityEngine;
 public class ControlaPaineis : MonoBehaviour
 {
     public static ControlaPaineis instance;
-    public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial; 
-    private int Controle = 0; // PARA PRIMEIRA VEZ NO JOGO  
+    public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial, PainelColeta, PainelBarbeiro; 
+    private bool ControleTutorial = false, ControleAcai = false, ControleDano = false; // PARA PRIMEIRA VEZ NO JOGO  
     
     // ============================== REPETIÇÃO ============================ \\
     public void Update()
     {
         // VERIFICA SE É A PRIMEIRA VEZ QUE É JOGADO, PARA ATIVAR O TUTORIAL E ATIVA O CONTROLE PARA NUNCA MAIS ENTRAR NESSA CONDIÇÃO
-        if (Contador.instance.AcaiTotal == 0 && Controle == 0)
+        if (Contador.instance.AcaiTotal == 0 && ControleTutorial == false)
         {
             DesligaPainel();
             TutorialUI();
-            Controle = 1;
+            ControleTutorial = true;
+        }
+
+        // VERIFICA SE É A PRIMEIRA VEZ QUE COLETA AÇAI
+        if (Contador.instance.AcaiTotal == 1 && ControleAcai == false)
+        {
+            DesligaPainel();
+            ColetouAcaiUI();
+            ControleAcai = true;
+        }
+
+        // VERIFICA SE É A PRIMEIRA VEZ QUE TOCA EM UM BARBEIRO
+        if (Sintoma.instance.painelBarbeiro == 1 && ControleDano == false)
+        {
+            DesligaPainel();
+            TocouBarbeiro();
+            ControleDano = true;
         }
 
         // VERIFICA SE A VIDA É ZERO PARA CHAMAR O PAINEL DE MORTE
@@ -46,39 +62,53 @@ public class ControlaPaineis : MonoBehaviour
         PainelWin.SetActive(false);
         PainelPause.SetActive(false);
         PainelTutorial.SetActive(false);
+        PainelColeta.SetActive(false);
+        PainelBarbeiro.SetActive(false);
     }
 
-    // ATIVA PAINEL DE LOSE E PAUSA O TEMPO
+    // ATIVA PAINEL DE LOSE E PAUSA O TEMPO ================= \\
     public void GameOverUI()
     {
         PainelLose.SetActive(true);
         Time.timeScale = 0;
     }
 
-    //ATIVA PAINEL DE PRÓXIMO NÍVEL E PAUSA O TEMPO
+    //ATIVA PAINEL DE PRÓXIMO NÍVEL E PAUSA O TEMPO ================= \\
     public void PassLevelUI()
     {
         PainelWin.SetActive(true);
         Time.timeScale = 0;
     }
 
-    // ATIVA PAINEL DE PAUSE E PAUSA
+    // ================== ATIVA PAINEL DE PAUSE E PAUSA ================= \\
     public void PauseUI()
     {
         PainelPause.SetActive(true);
         Time.timeScale = 0;
     }
 
-    // ATIVA PAINEL DE TUTORIAL E PAUSA
+    // ================== DESATIVA PAINEL DE PAUSE E CONTINUA ================= \\
+    public void ContinueUI()
+    {
+        Time.timeScale = 1;
+    }
+
+    // ================== ATIVA PAINEL DE TUTORIAL E PAUSA ================= \\
     public void TutorialUI()
     {
         PainelTutorial.SetActive(true);
         Time.timeScale = 0;
     }
 
-    // DESATIVA PAINEL DE PAUSE E CONTINUA
-    public void ContinueUI()
-    {
-        Time.timeScale = 1;
+    // ================== ATIVA PAINEL DE COLETA E PAUSA ================= \\
+    public void ColetouAcaiUI(){
+        PainelColeta.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    // ============ ATIVA PAINEL DE TOQUE NO BARBEIRO E PAUSA ============= \\
+    public void TocouBarbeiro(){
+        PainelBarbeiro.SetActive(true);
+        Time.timeScale = 0;
     }
 }
