@@ -7,68 +7,24 @@ public class Sintoma : MonoBehaviour {
 
     //VARIÁVEIS
     public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    public int ValorAtual = 3, Dano = 1, Energia = 1, controleBarbeiro = 0;    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
-    public int painelBarbeiro = 0;                              // ATIVA PAINEL DE PRIMEIRO TOQUE NO BARBEIRO
-    public static int Morreu = 0;
+    
+    // CONTROLE DE VIDA
+    public int ValorAtual = 3, Dano = 1, Energia = 1;    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
+    public static int Morreu = 0;                   // 1=MORTO, 0=VIVO
+    
+    // TEXTO E IMAGEM
     public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
     public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
+    
+    // ANIMAÇÃO
+    public static int damage = 0;               // CONTROLE DE ANIMAÇÃO DE HIT
     public Animator anime;
 
+    // ATIVA A ANIMAÇÃO
     public void Start()
     {
         anime = GetComponent<Animator>();
     }
-
-    public void Awake() 
-    {
-        AtualizaBarbeiro();
-        
-        // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES
-        // controleBarbeiro *= 0; painelBarbeiro *= 0; Salva(controleBarbeiro);
-
-        if (instance == null)                       
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    //====================== CONTAGEM DE PRIMEIRO TOQUE ====================== \\
-    //tocou É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
-    public void BarbeiroTocou(int Apanhou)
-    {
-        if (ValorAtual < 3 && controleBarbeiro == 0){
-            painelBarbeiro = 1;
-            controleBarbeiro += Apanhou;
-            Salva(controleBarbeiro);                                   //SALVA
-        } 
-    }
-
-    //GUARDA O VALOR DA VARIÁVEL NA CHAVE 'AcaiSalvo'
-    public void Salva(int Apanhou)
-    {
-        PlayerPrefs.SetInt("Tocou", controleBarbeiro);
-    }
-
-    //VERIFICA SE TEM ALGO SALVO NA CHAVE 'AcaiSalvo'
-    public void AtualizaBarbeiro()
-    {
-        if (PlayerPrefs.HasKey("Tocou"))                
-        {
-            controleBarbeiro = PlayerPrefs.GetInt("Tocou");    //SE TIVER, PEGA O VALOR DA CHAVE E ATRIBUI NA VARIÁVEL 'AcaiTotal'
-        }
-        else
-        {
-            controleBarbeiro = 0;                                  //SE NÃO TEM NADA SALVO COMEÇA COM ZERO
-            PlayerPrefs.SetInt("Tocou", controleBarbeiro);     //ATRIBUI O ZERO NO VARIÁVEL
-        }
-    }
-
-
 
     // ============================ COLISÕES ================================= \\
     //COLISÃO COM INIMIGO
@@ -76,11 +32,16 @@ public class Sintoma : MonoBehaviour {
     {
         if (Dano.gameObject.CompareTag("Inimigo"))              
         {
-            anime.SetBool("Hit", true);
-            GameManager.instance.PlaySom(1);              // Gerenciador de Áudio
+            // ANIMAÇÃO HIT
+            damage = 1;
+
+            // DESTROI O OBJETO E PERDE VIDA
             Destroy(Dano.gameObject);                       //DESTROI O INIMIGO QUANDO TOCA
             VidaPerde();                                    //CHAMA O METODO 'VidaPerde'
-            BarbeiroTocou(1);
+            
+            // EMITE SOM E CONTA TOQUES NO BARBEIRO
+            GameManager.instance.PlaySom(1);              // Gerenciador de Áudio
+            GameManager.instance.BarbeiroTocou();
         }
     }
 

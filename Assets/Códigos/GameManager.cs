@@ -4,6 +4,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;           //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
+    
+    // ================== CONTROLA PRIMEIRA VEZ NO JOGO ====================== \\
+    // SÓ VAI ATIVAR O PAINEL DE AVISO SE FOR ZERO, SE FOR 1 SIGNIFICA QUE JA FOI ATIVADO.
+    public int ControleTutorial = 0, ControleColeta = 0, ControleDano = 0;  
+
+    // =========================== Painel barbeiro ========================= \\
+    public int toqueBarbeiro = 0, painelBarbeiro = 0;  // ATIVA PAINEL DE PRIMEIRO TOQUE NO BARBEIRO
+    
     // ============================= AUDIOS ============================== \\
     public bool ligaSom = true;
 
@@ -20,6 +28,10 @@ public class GameManager : MonoBehaviour
     {
         // COMEÇA A MUSICA
         PlayMusica(0);
+        AtualizaBarbeiro();        
+
+        // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES
+         toqueBarbeiro *= 0; painelBarbeiro *= 0; Salva(toqueBarbeiro);
 
         if (instance == null)                                   //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
         {
@@ -29,6 +41,35 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    //====================== CONTAGEM DE PRIMEIRO TOQUE ====================== \\
+    //tocou É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
+    public void BarbeiroTocou()
+    {
+            painelBarbeiro = 1;
+            toqueBarbeiro ++ ;
+            Salva(toqueBarbeiro);                                   //SALVA
+    }
+
+    //GUARDA O VALOR DA VARIÁVEL NA CHAVE 'AcaiSalvo'
+    public void Salva(int conta)
+    {
+        PlayerPrefs.SetInt("Tocou", conta);
+    }
+
+    //VERIFICA SE TEM ALGO SALVO NA CHAVE 'AcaiSalvo'
+    public void AtualizaBarbeiro()
+    {
+        if (PlayerPrefs.HasKey("Tocou"))                
+        {
+            toqueBarbeiro = PlayerPrefs.GetInt("Tocou");    //SE TIVER, PEGA O VALOR DA CHAVE E ATRIBUI NA VARIÁVEL 'AcaiTotal'
+        }
+        else
+        {
+            toqueBarbeiro = 0;                                  //SE NÃO TEM NADA SALVO COMEÇA COM ZERO
+            PlayerPrefs.SetInt("Tocou", toqueBarbeiro);     //ATRIBUI O ZERO NO VARIÁVEL
         }
     }
 

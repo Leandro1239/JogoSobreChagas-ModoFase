@@ -5,33 +5,32 @@ public class ControlaPaineis : MonoBehaviour
 {
     public static ControlaPaineis instance;
     public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial, PainelColeta, PainelBarbeiro; 
-    private bool ControleTutorial = false, ControleAcai = false, ControleDano = false; // PARA PRIMEIRA VEZ NO JOGO  
     
     // ============================== REPETIÇÃO ============================ \\
     public void Update()
     {
         // VERIFICA SE É A PRIMEIRA VEZ QUE É JOGADO, PARA ATIVAR O TUTORIAL E ATIVA O CONTROLE PARA NUNCA MAIS ENTRAR NESSA CONDIÇÃO
-        if (Contador.instance.AcaiTotal == 0 && ControleTutorial == false)
+        if (Contador.instance.AcaiTotal == 0 && GameManager.instance.ControleTutorial == 0)
         {
             DesligaPainel();
             TutorialUI();
-            ControleTutorial = true;
+            GameManager.instance.ControleTutorial = 1;
         }
 
         // VERIFICA SE É A PRIMEIRA VEZ QUE COLETA AÇAI
-        if (Contador.instance.AcaiTotal == 1 && ControleAcai == false)
+        if (Contador.instance.AcaiTotal == 1 && GameManager.instance.ControleColeta == 0)
         {
             DesligaPainel();
             ColetouAcaiUI();
-            ControleAcai = true;
+            GameManager.instance.ControleColeta = 1;
         }
 
         // VERIFICA SE É A PRIMEIRA VEZ QUE TOCA EM UM BARBEIRO
-        if (Sintoma.instance.painelBarbeiro == 1 && ControleDano == false)
+        if (GameManager.instance.painelBarbeiro == 1 && GameManager.instance.ControleDano == 0)
         {
             DesligaPainel();
             TocouBarbeiro();
-            ControleDano = true;
+            GameManager.instance.ControleDano = 1;
         }
 
         // VERIFICA SE A VIDA É ZERO PARA CHAMAR O PAINEL DE MORTE
