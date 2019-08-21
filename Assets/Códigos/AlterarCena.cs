@@ -7,9 +7,15 @@ using UnityEngine.SceneManagement;
 public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o número somado
 {            
     public static AlterarCena instance;
-    
+
+
+    public void AtivaJogador()
+    {
+        EscolhePlayer.instance.Escolhe();
+    }
+
     // ========================== VOLTAR ================================== \\
-     public void Voltar()
+    public void Voltar()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         Time.timeScale = 1;

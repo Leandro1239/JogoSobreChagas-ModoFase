@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
     public AudioClip[] clipsSons;
     public AudioSource sons;
 
+    // ======================= COMPRA DE PERSONAGEM ======================== \\
+    public int[] personagemPreco;
+
     // ====================== NÃO DESTROI O OBJETO =================== \\
     void Awake()    
     {
@@ -31,7 +34,7 @@ public class GameManager : MonoBehaviour
         AtualizaBarbeiro();        
 
         // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES
-         toqueBarbeiro *= 0; painelBarbeiro *= 0; Salva(toqueBarbeiro);
+        // toqueBarbeiro *= 0; painelBarbeiro *= 0; Salva(toqueBarbeiro);
 
         if (instance == null)                                   //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
         {

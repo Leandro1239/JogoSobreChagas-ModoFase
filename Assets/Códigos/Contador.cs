@@ -16,7 +16,7 @@ public class Contador : MonoBehaviour
         AtualizaPlay(); 
         
         // TIRAR DOS COMENTÁRIOS PARA RESETAR OS VALORES
-         AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
+        // AcaiTotal *= 0; PlayTotal *= 0; Salva(AcaiTotal); SalvaPlay(PlayTotal); 
         
         if (instance == null)                       
         {
