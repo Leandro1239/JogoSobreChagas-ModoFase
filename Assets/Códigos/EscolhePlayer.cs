@@ -8,51 +8,38 @@ public class EscolhePlayer : MonoBehaviour
 {
     public static EscolhePlayer instance;
     GameObject player;
-    int i = 0;
+    int controle = 0;
 
     public GameObject[] players;
-    public Button proximo, anterior, seleciona;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        proximo.onClick = new Button.ButtonClickedEvent();
-        anterior.onClick = new Button.ButtonClickedEvent();
-        seleciona.onClick = new Button.ButtonClickedEvent();
-
-        proximo.onClick.AddListener(() => Proximo());
-        anterior.onClick.AddListener(() => Anterior());
-        seleciona.onClick.AddListener(() => Escolhe());
+    public void Start(){
+        player = GameObject.Find("Player");
+        DontDestroyOnLoad(player);
+        player = players[0];
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!player)
+    public void Awake(){
+        if (instance == null)                           //FAZ COM QUE O CÓDIGO NÃO SEJA DESTRUIDO TODA VEZ QUE REINICIAR O JOGO
         {
-            player = GameObject.Find("Player");
-            player = Instantiate(players[i], player.transform.position, player.transform.rotation);
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
-    void Proximo()
-    {
-        i++;
-        if (i >= players.Length)
-        {
-            i = 0;
-        }
+    public void TrocaPersonagem(){
         Destroy(player);
-    }
-
-    void Anterior()
-    {
-        i--;
-        if (i <= 0)
-        {
-            i = players.Length - 1;
+        player = GameObject.Find("Player");
+        if (controle == 0){
+            player = Instantiate(players[0], player.transform.position, player.transform.rotation);
+            controle = 1;
         }
-        Destroy(player);
+       else if (controle == 1){
+            player = Instantiate(players[1], player.transform.position, player.transform.rotation);
+            controle = 0;
+       }
     }
 
     public void Escolhe()

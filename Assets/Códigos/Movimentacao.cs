@@ -9,7 +9,7 @@ public class Movimentacao : MonoBehaviour
     public static Movimentacao instance; 
     
     //PLAYER
-    public Rigidbody2D player;                                                          //JOGADOR
+    GameObject player;                                                          //JOGADOR
     
     // IMAGEM DE FUNDO
     public RawImage rImg;                                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
@@ -29,17 +29,18 @@ public class Movimentacao : MonoBehaviour
 
     //ACHA O PLAYER E A ANIMAÇÃO
     void Start()                                               
-    {   
-        player = gameObject.GetComponent<Rigidbody2D>();
+    { 
         anime = GetComponent<Animator>();
     }
 
     //MÉTODO QUE REPETE SEMPRE
     void Update()
     {
+        /* MOVIMENTA O FUNDO
         Rect temp = new Rect(rImg.uvRect);                  //RAW IMG                                    
         temp.x += 1.001f + (1.005f * direcao);              //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
         rImg.uvRect = temp;
+        */
         transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
         noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);                  // DEFINE O TAMANHO DO RAIO DO 'CHECACHAO'
 
@@ -125,7 +126,7 @@ public class Movimentacao : MonoBehaviour
 
             // ADICIONA O SOM, A FORÇA DE PULO E FAZ COM QUE NÃO PULE EM SEGUIDA
             GameManager.instance.PlaySom(2);                // Gerenciador de Áudio
-            player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
+            //player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
             noChao = false;
         }
     }
