@@ -8,11 +8,6 @@ public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o nú
 {            
     public static AlterarCena instance;
 
-    public void AtivaJogador()
-    {
-        EscolhePlayer.instance.Escolhe();
-    }
-
     // ========================== VOLTAR ================================== \\
     public void Voltar()
     {

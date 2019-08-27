@@ -1348,7 +1348,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335836227}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.32, y: 2.18, z: 0}
+  m_LocalPosition: {x: -32.9, y: 2.18, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 556178520}
@@ -8554,6 +8554,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Saida
       objectReference: {fileID: 0}
+    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -1.2148926
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 5.5534925
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 979917285
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c312c922b2b06484c9107bae9f34dcc5,
+        type: 3}
     - target: {fileID: 616836832438795132, guid: 3ac94f48837bf984f9a52f86ac61ff56,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8618,42 +8654,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.96269524
-      objectReference: {fileID: 0}
-    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 979917285
-      objectReference: {fileID: 0}
-    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8021820187383281188, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c312c922b2b06484c9107bae9f34dcc5,
-        type: 3}
-    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 6.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -1.2148926
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285345685782174968, guid: 3ac94f48837bf984f9a52f86ac61ff56,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 5.5534925
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac94f48837bf984f9a52f86ac61ff56, type: 3}
@@ -18703,6 +18703,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1903090918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1924256883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1924256884}
+  m_Layer: 0
+  m_Name: CriaJogador
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1924256884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924256883}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.38, y: 3.57, z: 1350.9805}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1927058703
 GameObject:
   m_ObjectHideFlags: 0
@@ -19807,7 +19837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087487201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.95, y: 1.43, z: 0}
+  m_LocalPosition: {x: -27.39, y: 1.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 431832958}
