@@ -9,22 +9,17 @@ public class Sintoma : MonoBehaviour {
     public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
     
     // CONTROLE DE VIDA
-    public int ValorAtual = 3, Dano = 1, Energia = 1;    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
+    private int ValorAtual = 3, Dano = 1, Energia = 1;    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
     public static int Morreu = 0;                   // 1=MORTO, 0=VIVO
     
     // TEXTO E IMAGEM
-    public Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
-    public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
-    
+    private Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
+    //public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
+    private GameObject cora1, cora2, cora3;
+
     // ANIMAÇÃO
     public static int damage = 0;               // CONTROLE DE ANIMAÇÃO DE HIT
-    public Animator anime;
 
-    // ATIVA A ANIMAÇÃO
-    public void Start()
-    {
-        anime = GetComponent<Animator>();
-    }
 
     // ============================ COLISÕES ================================= \\
     //COLISÃO COM INIMIGO
@@ -59,17 +54,10 @@ public class Sintoma : MonoBehaviour {
     //MÉTODO QUE FAZ PERDER VIDA
     public void VidaPerde()                                 
     {
-        if (ValorAtual > 0)
+        if (ValorAtual >= 0)
         {
             ValorAtual -= Dano;
             EstadoSaude();                                  //CHAMA O MÉTODO 'EstadoSaúde' PARA VALIDAR 
-        }
-        if (ValorAtual == 0)
-        {
-            Morreu = 1;
-            Cora1.fillAmount = 0;
-            Cora2.fillAmount = 0;
-            Cora3.fillAmount = 0;
         }
     }
 
@@ -87,28 +75,36 @@ public class Sintoma : MonoBehaviour {
     //MÉTODO QUE VERIFICA O ESTADO DE SAÚDE PARA ESCREVER NA TELA
     public void EstadoSaude()                               //DIFINE TODOS OS ESTADOS E O QUE ACONTECE NELES
     {
+        Saude = GameObject.Find("EstadoSaude_text").GetComponent<Text>();
+        cora1 = GameObject.Find("Coracao1");
+        cora2 = GameObject.Find("Coracao2");
+        cora3 = GameObject.Find("Coracao3");
+
         if (ValorAtual == 3)
         {
             Saude.text = "Saudável";
-            Cora1.fillAmount = 1;
-            Cora2.fillAmount = 1;
-            Cora3.fillAmount = 1;
+            cora1.gameObject.SetActive(true);
+            cora2.gameObject.SetActive(true);
+            cora3.gameObject.SetActive(true);
         }
 
         if (ValorAtual == 2)
         {
             Saude.text = "Doente";
-            Cora1.fillAmount = 1;
-            Cora2.fillAmount = 1;
-            Cora3.fillAmount = 0;
+            cora3.gameObject.SetActive(false);
         }
 
         if (ValorAtual == 1)
         {
             Saude.text = "Muito Doente";
-            Cora1.fillAmount = 1;
-            Cora2.fillAmount = 0;
-            Cora3.fillAmount = 0;
+            cora2.gameObject.SetActive(false);
+        }
+
+        if (ValorAtual == 0)
+        {
+            Saude.text = "Perdeu";
+            Morreu = 1;
+            cora1.gameObject.SetActive(false);
         }
     }
 }

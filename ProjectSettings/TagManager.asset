@@ -10,6 +10,9 @@ TagManager:
   - Vida
   - Saida
   - Barreira
+  - Coracao1
+  - Coracao2
+  - Coracao3
   layers:
   - Default
   - TransparentFX

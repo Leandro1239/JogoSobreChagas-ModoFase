@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 8000449101425889257}
   - component: {fileID: 8000449101425889256}
   - component: {fileID: 8000449101425889259}
-  - component: {fileID: 8000449101425889269}
-  - component: {fileID: 8000449101425889268}
-  - component: {fileID: 8000449101425889258}
   - component: {fileID: 8000449101425889260}
+  - component: {fileID: -7439489152737884112}
+  - component: {fileID: 3934271707113727735}
   m_Layer: 10
   m_Name: Jogador
   m_TagString: Player
@@ -31,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8000449101425889271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.76, y: 3.36, z: 57}
-  m_LocalScale: {x: 1.6, y: 1.65, z: 1}
+  m_LocalPosition: {x: 8.76, y: 3.36, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 8000449102126265266}
   m_Father: {fileID: 0}
@@ -124,57 +123,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8000449101425889269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000449101425889271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a388835e2199174d98bd7441191de3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ValorAtual: 3
-  Dano: 1
-  Energia: 1
-  Saude: {fileID: 0}
-  Cora1: {fileID: 0}
-  Cora2: {fileID: 0}
-  Cora3: {fileID: 0}
-  anime: {fileID: 8000449101425889260}
---- !u!114 &8000449101425889268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000449101425889271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fcc4ede0f760b4281925695d216926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Coleta_Fase: {fileID: 0}
---- !u!114 &8000449101425889258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000449101425889271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00d79a3a2af7c1e46951b9895f4d341a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rImg: {fileID: 0}
-  noChao: 0
-  oChao:
-    serializedVersion: 2
-    m_Bits: 2048
-  checaChao: {fileID: 8000449102126265266}
 --- !u!95 &8000449101425889260
 Animator:
   serializedVersion: 3
@@ -194,6 +142,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-7439489152737884112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000449101425889271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a388835e2199174d98bd7441191de3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3934271707113727735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000449101425889271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fcc4ede0f760b4281925695d216926, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coleta_Fase: {fileID: 0}
 --- !u!1 &8000449102126265277
 GameObject:
   m_ObjectHideFlags: 0

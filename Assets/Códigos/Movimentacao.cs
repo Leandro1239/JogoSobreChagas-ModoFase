@@ -9,10 +9,7 @@ public class Movimentacao : MonoBehaviour
     public static Movimentacao instance; 
     
     //PLAYER
-    GameObject player;                                                          //JOGADOR
-    
-    // IMAGEM DE FUNDO
-    public RawImage rImg;                                                               //IMAGEM DE FUNDO QUE FICA MEXENDO
+    private GameObject player;                                                          //JOGADOR
     
     // CONTROLE DE PULO E VELOCIDADE
     private int forcapulo = 100, velocidade = 7, direcao = 0;                          //FORÇA DE PULO, VELOCIDADE DA CORRIDA, ORIENTAÇÃO NO EIXO X
@@ -21,28 +18,25 @@ public class Movimentacao : MonoBehaviour
     // GAME OBJECT QUE CHECA O CHÃO
     public bool noChao = false;
     private float raioChao = 0.4f;
+    private Transform checaChao;
     public LayerMask oChao;
-    public Transform checaChao;
 
     // ANIMAÇÃO
-    private Animator anime;
-
-    //ACHA O PLAYER E A ANIMAÇÃO
-    void Start()                                               
-    { 
-        anime = GetComponent<Animator>();
-    }
+    public Animator anime;
 
     //MÉTODO QUE REPETE SEMPRE
     void Update()
-    {
-        /* MOVIMENTA O FUNDO
-        Rect temp = new Rect(rImg.uvRect);                  //RAW IMG                                    
-        temp.x += 1.001f + (1.005f * direcao);              //VELOCIDADE DE MOVIMENTO DA TELA DE FUNDO
-        rImg.uvRect = temp;
-        */
-        transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));        //MOVE O JOGADOR
-        noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);                  // DEFINE O TAMANHO DO RAIO DO 'CHECACHAO'
+    {        
+        //MOVE O JOGADOR
+        player = GameObject.Find("Player");
+        player.transform.Translate(new Vector3((direcao * velocidade) * Time.deltaTime, 0, 0));       
+
+        // Checa o Chão
+        checaChao = player.transform.Find("ChecaChão");
+        noChao = Physics2D.OverlapCircle(checaChao.position, raioChao, oChao);           // DEFINE O TAMANHO DO RAIO DO 'CHECACHAO'
+
+        // Animação
+        anime = player.GetComponent<Animator>();
 
         //CONTROLANDO PELO TECLADO PARA TESTES
         if (Input.GetKeyDown(KeyCode.Space))
@@ -83,9 +77,9 @@ public class Movimentacao : MonoBehaviour
     void Flip()                                                 
     {
         olhandodireita = !olhandodireita;                       //INVERTE A ORIENTAÇÃO
-        Vector3 theScale = transform.localScale;                //PEGA O VALOR DA ESCALA
+        Vector3 theScale = player.transform.localScale;                //PEGA O VALOR DA ESCALA
         theScale.x *= -1;                                       //INVERTE A ESCALA
-        transform.localScale = theScale;                        //VALIDA
+        player.transform.localScale = theScale;                        //VALIDA
     }
 
     //VIRA PARA A DIREITA
