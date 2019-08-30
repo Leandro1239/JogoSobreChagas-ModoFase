@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o número somado
 {            
     public static AlterarCena instance;
-
+    
     // ========================== VOLTAR ================================== \\
     public void Voltar()
     {

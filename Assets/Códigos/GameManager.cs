@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,8 +24,12 @@ public class GameManager : MonoBehaviour
     public AudioClip[] clipsSons;
     public AudioSource sons;
 
-    // ======================= COMPRA DE PERSONAGEM ======================== \\
-    public int[] personagemPreco;
+    // =========================== TROCA DE PERSONAGEM ======================= \\
+    public GameObject player1, player2;
+    private GameObject achaJogador;
+    
+    private Scene cenaAtual;                // SABER QUAL CENA ESTÁ
+    private bool jogadorAtivado;
 
     // ====================== NÃO DESTROI O OBJETO =================== \\
     void Awake()    
@@ -47,7 +52,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //====================== CONTAGEM DE PRIMEIRO TOQUE ====================== \\
+    //====================== CONTAGEM DE PRIMEIRO DANO ====================== \\
     //tocou É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
     public void BarbeiroTocou()
     {
@@ -56,7 +61,7 @@ public class GameManager : MonoBehaviour
             Salva(toqueBarbeiro);                                   //SALVA
     }
 
-    //GUARDA O VALOR DA VARIÁVEL NA CHAVE 'AcaiSalvo'
+    //GUARDA O VALOR DA VARIÁVEL NA CHAVE 'Tocou'
     public void Salva(int conta)
     {
         PlayerPrefs.SetInt("Tocou", conta);
@@ -76,6 +81,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // ========================= ATIVA O PERSONAGEM ======================== \\
+    // PEGA O PERSONAGEM ESCOLHIDO NO MENU E CRIA ELE NA FASE DO JOGO
+    public void Update(){
+        cenaAtual = SceneManager.GetActiveScene();      // PEGA A CENA ATUAL
+
+        // CASO ESTEJA NA FASE DESEJADA, PROCURA O LOCAL DE CRIAÇÃO, COLOCA O JOGADOR LÁ E TROCA DE NOME
+        if (cenaAtual.name  == "Fase-1" && jogadorAtivado == false){
+            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
+            if( EscolhePlayer.escolheu == 1){
+                player1.SetActive(true);
+                achaJogador = GameObject.Find("CriaJogador");
+                achaJogador = Instantiate(player1, achaJogador.transform.position, achaJogador.transform.rotation);           
+                achaJogador.name = "Player";
+                jogadorAtivado = true;
+            }
+
+            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
+            if(EscolhePlayer.escolheu == 2 ){
+                player2.SetActive(true);
+                achaJogador = GameObject.Find("CriaJogador");
+                achaJogador = Instantiate(player2, achaJogador.transform.position, achaJogador.transform.rotation);
+                achaJogador.name = "Player";
+                jogadorAtivado = true;
+            }
+        }
+
+        if (cenaAtual.name  == "Menu" || cenaAtual.name  == "SelecionarFases"){
+            jogadorAtivado = false;
+        }
+    }
+    
     // ========================== METODOS DOS AUDIO ========================= \\
     // SONS
     public void PlaySom(int index){
