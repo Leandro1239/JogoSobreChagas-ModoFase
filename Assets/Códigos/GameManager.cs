@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     public int toqueBarbeiro = 0, painelBarbeiro = 0;  // ATIVA PAINEL DE PRIMEIRO TOQUE NO BARBEIRO
     
     // ============================= AUDIOS ============================== \\
-    public bool ligaSom = true;
-
     // Músicas
     public AudioClip[] clipsMusica;
     public AudioSource musicaBG;  
@@ -30,9 +28,6 @@ public class GameManager : MonoBehaviour
     
     private Scene cenaAtual;                // SABER QUAL CENA ESTÁ
     private bool jogadorAtivado;
-
-    // =========================== TRADUÇÃO =========================== \\
-    public int controleTraducao;
 
     // ====================== NÃO DESTROI O OBJETO =================== \\
     void Awake()    
@@ -85,15 +80,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // private void FixedUpdate() {
-    // // ============================ TRADUCAO ============================== \\
-    // if (controleTraducao == 0){
-    //     Tradutor.instance.SetEnglish();
-    // }else if(controleTraducao == 1){
-    //     Tradutor.instance.SetPortuguese();
-    // }
-    // }
-
     //====================== CONTAGEM DE PRIMEIRO DANO ====================== \\
     //tocou É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
     public void BarbeiroTocou()
@@ -140,13 +126,11 @@ public class GameManager : MonoBehaviour
     public void Liga(){
         musicaBG.volume = 1f;
         sons.volume = 1f;
-        ligaSom = true;
     }
 
     // DESLIGA O SOM
     public void Desliga(){
         musicaBG.volume = 0f;
         sons.volume = 0f;
-        ligaSom = false;
     }
 }

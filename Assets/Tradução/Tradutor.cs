@@ -1,23 +1,49 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using DFTGames.Localization;
 
 public class Tradutor : MonoBehaviour
 {
-    public static Tradutor instance; 
+    public static Tradutor instance;
+    public int lingua = 0;
+    public Button PT, EN; 
     #region Public Methods
+
+    private void Update() {
+    // ============================ TRADUCAO ============================== \\
+        if (lingua == 0){
+            SetEnglish();
+            EN.interactable = false;
+            PT.interactable = true;
+        }
+        
+        if(lingua == 1){
+            SetPortuguese();
+            EN.interactable = true;
+            PT.interactable = false;
+        }
+    }
+    
+    public void Ingles()
+    {
+        lingua = 0;
+    }
+
+    public void Portugues()
+    {
+        lingua = 1;
+    }
 
     public void SetEnglish()
     {
         Localize.SetCurrentLanguage(SystemLanguage.English);
         LocalizeImage.SetCurrentLanguage();
-        GameManager.instance.controleTraducao = 0;
     }
 
     public void SetPortuguese()
     {
         Localize.SetCurrentLanguage(SystemLanguage.Portuguese);
         LocalizeImage.SetCurrentLanguage();
-        GameManager.instance.controleTraducao = 1;
     }
     
     #endregion Public Methods
