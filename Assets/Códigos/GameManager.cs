@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     private Scene cenaAtual;                // SABER QUAL CENA ESTÁ
     private bool jogadorAtivado;
 
+    // =========================== TRADUÇÃO =========================== \\
+    public int controleTraducao;
+
     // ====================== NÃO DESTROI O OBJETO =================== \\
     void Awake()    
     {
@@ -51,6 +54,45 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void Update(){
+    // ========================= ATIVA O PERSONAGEM ======================== \\
+    // PEGA O PERSONAGEM ESCOLHIDO NO MENU E CRIA ELE NA FASE DO JOGO
+        cenaAtual = SceneManager.GetActiveScene();      // PEGA A CENA ATUAL
+
+        // CASO ESTEJA NA FASE DESEJADA, PROCURA O LOCAL DE CRIAÇÃO, COLOCA O JOGADOR LÁ E TROCA DE NOME
+        if (cenaAtual.name  == "Fase-1" && jogadorAtivado == false){
+            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
+            if( EscolhePlayer.escolheu == 1){
+                player1.SetActive(true);
+                achaJogador = GameObject.Find("CriaJogador");
+                achaJogador = Instantiate(player1, achaJogador.transform.position, achaJogador.transform.rotation);           
+                achaJogador.name = "Player";
+                jogadorAtivado = true;
+            }
+
+            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
+            if(EscolhePlayer.escolheu == 2 ){
+                player2.SetActive(true);
+                achaJogador = GameObject.Find("CriaJogador");
+                achaJogador = Instantiate(player2, achaJogador.transform.position, achaJogador.transform.rotation);
+                achaJogador.name = "Player";
+                jogadorAtivado = true;
+            }
+        }
+        if (cenaAtual.name  == "Menu" || cenaAtual.name  == "SelecionarFases"){
+            jogadorAtivado = false;
+        }
+    }
+
+    // private void FixedUpdate() {
+    // // ============================ TRADUCAO ============================== \\
+    // if (controleTraducao == 0){
+    //     Tradutor.instance.SetEnglish();
+    // }else if(controleTraducao == 1){
+    //     Tradutor.instance.SetPortuguese();
+    // }
+    // }
 
     //====================== CONTAGEM DE PRIMEIRO DANO ====================== \\
     //tocou É A VARIAVEL CRIADA PARA COMUNICAÇÃO ENTRE CÓDIGOS ATRAVÉS DO ARGUMENTO
@@ -80,37 +122,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("Tocou", toqueBarbeiro);     //ATRIBUI O ZERO NO VARIÁVEL
         }
     }
-
-    // ========================= ATIVA O PERSONAGEM ======================== \\
-    // PEGA O PERSONAGEM ESCOLHIDO NO MENU E CRIA ELE NA FASE DO JOGO
-    public void Update(){
-        cenaAtual = SceneManager.GetActiveScene();      // PEGA A CENA ATUAL
-
-        // CASO ESTEJA NA FASE DESEJADA, PROCURA O LOCAL DE CRIAÇÃO, COLOCA O JOGADOR LÁ E TROCA DE NOME
-        if (cenaAtual.name  == "Fase-1" && jogadorAtivado == false){
-            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
-            if( EscolhePlayer.escolheu == 1){
-                player1.SetActive(true);
-                achaJogador = GameObject.Find("CriaJogador");
-                achaJogador = Instantiate(player1, achaJogador.transform.position, achaJogador.transform.rotation);           
-                achaJogador.name = "Player";
-                jogadorAtivado = true;
-            }
-
-            // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
-            if(EscolhePlayer.escolheu == 2 ){
-                player2.SetActive(true);
-                achaJogador = GameObject.Find("CriaJogador");
-                achaJogador = Instantiate(player2, achaJogador.transform.position, achaJogador.transform.rotation);
-                achaJogador.name = "Player";
-                jogadorAtivado = true;
-            }
-        }
-
-        if (cenaAtual.name  == "Menu" || cenaAtual.name  == "SelecionarFases"){
-            jogadorAtivado = false;
-        }
-    }
     
     // ========================== METODOS DOS AUDIO ========================= \\
     // SONS
@@ -137,19 +148,5 @@ public class GameManager : MonoBehaviour
         musicaBG.volume = 0f;
         sons.volume = 0f;
         ligaSom = false;
-    }
-
-    // LIGA OU DESLIGA
-    public void LigaDesliga(){
-        if (ligaSom){
-            musicaBG.volume = 0f;
-            sons.volume = 0f;
-            ligaSom = false;
-        }
-        else{
-            musicaBG.volume = 1f;
-            sons.volume = 1f;
-            ligaSom = true;
-        }
     }
 }

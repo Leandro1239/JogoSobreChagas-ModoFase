@@ -1,0 +1,17 @@
+play = Play
+options = Options
+quit = Quit
+share = Share
+character = Character
+record = Record
+sound = Sound
+language = Language
+back = Back
+facebook = Facebook
+wpp = Whatsapp
+copy = Copy Link
+next = Next
+chose = Chose
+textAcai = Your Total Acai Collection is:
+textPlay = Your Total Matches is:
+

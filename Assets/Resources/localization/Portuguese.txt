@@ -1,0 +1,16 @@
+play = Jogar
+options = Opções
+quit = Sair
+share = Compartilhar
+character = Personagem
+record = Recorde
+sound = Sons
+language = Idioma
+back = Voltar
+facebook = Facebook
+wpp = Whatsapp
+copy = Copiar Link
+next = Próximo
+chose = Escolher
+textAcai = Sua Coleta Total de Açaí é: 
+textPlay = Seu Total de Partidas é: 
