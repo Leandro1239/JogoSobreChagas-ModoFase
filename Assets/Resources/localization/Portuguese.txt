@@ -1,5 +1,5 @@
 play = Jogar
-options = Opções
+options = Outros
 quit = Sair
 share = Compartilhar
 character = Personagem

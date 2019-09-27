@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ControlaAudio : MonoBehaviour
 {
-    public static ControlaAudio instance;           //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    private int controle = 0;
+    public static ControlaAudio instance;           //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES
+    public int liga_Desliga = 1, estadoAtual;
     
     // Músicas
     public AudioClip[] clipsMusica;
@@ -16,6 +16,39 @@ public class ControlaAudio : MonoBehaviour
     public AudioClip[] clipsSons;
     public AudioSource sons;
 
+    // COMEÇA ATIVANDO A MÚSICA
+    public void Start() {
+        PlayMusica(0);
+    }
+    
+    // VERIFICA O ULTIMO ESTADO DA MUSICA, LIGADO OU DESLIGADO
+    public void Update() {
+        AtualizaEstadoSom();
+    }
+
+    // SALVA O ESTADO DA MUSICA
+    public void Salva(int estado)
+    {
+        PlayerPrefs.SetInt("EstadoSom", estado);
+    }
+
+    //VERIFICA SE TEM ALGO SALVO NA CHAVE 'EstadoSom'
+    public void AtualizaEstadoSom()
+    {
+        estadoAtual = PlayerPrefs.GetInt("EstadoSom");
+
+        if (estadoAtual == 1)                
+        {
+            liga_Desliga = 1;    
+            Liga();
+        }
+        if (estadoAtual == 0)  
+        {
+            liga_Desliga = 0;
+            Desliga();                                  
+        }
+    }
+    
     // ========================== METODOS DOS AUDIO ========================= \\
     // SONS
     public void PlaySom(int index){
@@ -43,17 +76,16 @@ public class ControlaAudio : MonoBehaviour
 
     // MÉTODO QUE LIGA E DESLIGA O SOM E ALTERA A IMAGEM
     public void OnOffSom(){
-        switch (controle)
+        switch (liga_Desliga)
         {
-            case 0: Desliga();
-                    EncontraImgAudio.instance.imgOn.fillAmount = 1;
-                    EncontraImgAudio.instance.imgOff.fillAmount = 0;
-                    controle = 1;
+            case 0: Liga();
+                    liga_Desliga = 1;
+                    Salva(liga_Desliga);
                     break;
-            case 1: Liga();
-                    EncontraImgAudio.instance.imgOn.fillAmount = 1;
-                    EncontraImgAudio.instance.imgOff.fillAmount = 0;
-                    controle = 0;
+
+            case 1: Desliga();
+                    liga_Desliga = 0;
+                    Salva(liga_Desliga);
                     break;
         }
     }
