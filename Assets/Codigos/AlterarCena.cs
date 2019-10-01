@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 // FAZ MÉTODOS DE TROCAR DE CENÁRIO
 public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o número somado
 {            
-    public static AlterarCena instance;
-    
+    Somador Somador_R = new Somador();
+    Contador Contador_R = new Contador();
+
     // ========================== VOLTAR ================================== \\
     public void Voltar()
     {
@@ -72,7 +73,7 @@ public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o nú
     // ========================== AVANÇAR ================================== \\
     public void Avançar1()
     {
-        Somador.AcaiFase = 0;
+        Somador_R.AcaiFase = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1;
     }
@@ -140,8 +141,8 @@ public class AlterarCena : MonoBehaviour //Troca de cenário de acordo com o nú
     //RECARREGA A CENA
     public void Repetir()           
     {
-        Somador.AcaiFase = 0;
-        Contador.instance.Jogou(1);
+        Somador_R.AcaiFase = 0;
+        Contador_R.Jogou(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

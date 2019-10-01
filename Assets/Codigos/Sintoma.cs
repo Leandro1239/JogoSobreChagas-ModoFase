@@ -3,23 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // TRATA OS DANOS QUE O PERSONAGEM TOMA
-public class Sintoma : MonoBehaviour {
-
-    //VARIÁVEIS
-    public static Sintoma instance;                                         //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
+public class Sintoma : MonoBehaviour 
+{
+    ControlaAudio ControlaAudio_R = new ControlaAudio();
+    ControlaPaineis ControlaPaineis_R = new ControlaPaineis();
     
     // CONTROLE DE VIDA
-    private int ValorAtual = 3, Dano = 1, Energia = 1;    //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
-    public static int Morreu = 0;                   // 1=MORTO, 0=VIVO
+    public int ValorAtual = 3, Dano = 1, Energia = 1, Morreu = 0, damage = 0;   //VALOR TOTAL DA VIDA, VALOR QUANDO LEVA DANO, VALOR QUANDO RECUPERA VIDA
     
     // TEXTO E IMAGEM
     private Text Saude;                                                      //RECEBE O TEXTO ONDE ESCREVE O ATUAL ESTADO
-    //public Image Cora1, Cora2, Cora3;                                       //IMAGENS DOS CORAÇÕES PARA MOSTRAR QUE PERDEU VIDA
     private GameObject cora1, cora2, cora3;
-
-    // ANIMAÇÃO
-    public static int damage = 0;               // CONTROLE DE ANIMAÇÃO DE HIT
-
 
     // ============================ COLISÕES ================================= \\
     //COLISÃO COM INIMIGO
@@ -35,8 +29,8 @@ public class Sintoma : MonoBehaviour {
             VidaPerde();                                    //CHAMA O METODO 'VidaPerde'
             
             // EMITE SOM E CONTA TOQUES NO BARBEIRO
-            ControlaAudio.instance.PlaySom(1);              // Gerenciador de Áudio
-            ControlaPaineis.instance.BarbeiroTocou();
+            ControlaAudio_R.PlaySom(1);              // Gerenciador de Áudio
+            ControlaPaineis_R.BarbeiroTocou();
         }
     }
 

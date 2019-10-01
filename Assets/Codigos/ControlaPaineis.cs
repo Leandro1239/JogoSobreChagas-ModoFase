@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class ControlaPaineis : MonoBehaviour
 {
-    public static ControlaPaineis instance;
-    
+    Contador Contador_R = new Contador();
+    Sintoma Sintoma_R = new Sintoma();
+    EncontraPaineis EncontraPaineis_R = new EncontraPaineis();
+  
     // SÓ VAI ATIVAR O PAINEL DE AVISO SE FOR ZERO, SE FOR 1 SIGNIFICA QUE JA FOI ATIVADO.
     private int controleTutorial = 0, controleColeta = 0, controleDano = 0;
     private bool apanhou = false; 
@@ -13,7 +15,7 @@ public class ControlaPaineis : MonoBehaviour
     public void Update()
     {   
         // VERIFICA SE É A PRIMEIRA VEZ QUE É JOGADO, PARA ATIVAR O TUTORIAL E ATIVA O CONTROLE PARA NUNCA MAIS ENTRAR NESSA CONDIÇÃO
-        if (Contador.instance.AcaiTotal == 0 && controleTutorial == 0)
+        if (Contador_R.AcaiTotal == 0 && controleTutorial == 0)
         {
             DesligaPainel();
             TutorialUI();
@@ -21,7 +23,7 @@ public class ControlaPaineis : MonoBehaviour
         }
 
         // VERIFICA SE É A PRIMEIRA VEZ QUE COLETA AÇAI
-        if (Contador.instance.AcaiTotal == 1 && controleColeta == 0)
+        if (Contador_R.AcaiTotal == 1 && controleColeta == 0)
         {
             DesligaPainel();
             ColetouAcaiUI();
@@ -38,11 +40,11 @@ public class ControlaPaineis : MonoBehaviour
 
         // ======================== MORTE E VITÓRIA ======================== //
         // VERIFICA SE A VIDA É ZERO PARA CHAMAR O PAINEL DE MORTE
-        if (Sintoma.Morreu == 1)
+        if (Sintoma_R.Morreu == 1)
         {
             DesligaPainel();
             GameOverUI();
-            Sintoma.Morreu = 0;
+            Sintoma_R.Morreu = 0;
         }
 
         // VERIFICA EM TODOS OS NÍVEIS SE ELE VENCEU ALGUM, SE SIM MOSTRA O PAINEL DE VITÓRIA E DESLIGA A VITÓRIA DO NÍVEL
@@ -91,32 +93,32 @@ public class ControlaPaineis : MonoBehaviour
     // CHAMA UMA FUNÇÃO PARA DESATIVAR OS PAINEIS 
     public void DesligaPainel()
     {
-        EncontraPaineis.instance.PainelLose.SetActive(false);
-        EncontraPaineis.instance.PainelWin.SetActive(false);
-        EncontraPaineis.instance.PainelPause.SetActive(false);
-        EncontraPaineis.instance.PainelTutorial.SetActive(false);
-        EncontraPaineis.instance.PainelColeta.SetActive(false);
-        EncontraPaineis.instance.PainelBarbeiro.SetActive(false);
+        EncontraPaineis_R.PainelLose.SetActive(false);
+        EncontraPaineis_R.PainelWin.SetActive(false);
+        EncontraPaineis_R.PainelPause.SetActive(false);
+        EncontraPaineis_R.PainelTutorial.SetActive(false);
+        EncontraPaineis_R.PainelColeta.SetActive(false);
+        EncontraPaineis_R.PainelBarbeiro.SetActive(false);
     }
 
     // ATIVA PAINEL DE LOSE E PAUSA O TEMPO ================= \\
     public void GameOverUI()
     {
-        EncontraPaineis.instance.PainelLose.SetActive(true);
+        EncontraPaineis_R.PainelLose.SetActive(true);
         Time.timeScale = 0;
     }
 
     //ATIVA PAINEL DE PRÓXIMO NÍVEL E PAUSA O TEMPO ================= \\
     public void PassLevelUI()
     {
-        EncontraPaineis.instance.PainelWin.SetActive(true);
+        EncontraPaineis_R.PainelWin.SetActive(true);
         Time.timeScale = 0;
     }
 
     // ================== ATIVA PAINEL DE PAUSE E PAUSA ================= \\
     public void PauseUI()
     {
-        EncontraPaineis.instance.PainelPause.SetActive(true);
+        EncontraPaineis_R.PainelPause.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -129,19 +131,19 @@ public class ControlaPaineis : MonoBehaviour
     // ================== ATIVA PAINEL DE TUTORIAL E PAUSA ================= \\
     public void TutorialUI()
     {
-        EncontraPaineis.instance.PainelTutorial.SetActive(true);
+        EncontraPaineis_R.PainelTutorial.SetActive(true);
         Time.timeScale = 0;
     }
 
     // ================== ATIVA PAINEL DE COLETA E PAUSA ================= \\
     public void ColetouAcaiUI(){
-        EncontraPaineis.instance.PainelColeta.SetActive(true);
+        EncontraPaineis_R.PainelColeta.SetActive(true);
         Time.timeScale = 0;
     }
 
     // ============ ATIVA PAINEL DE TOQUE NO BARBEIRO E PAUSA ============= \\
     public void TocouBarbeiro(){
-        EncontraPaineis.instance.PainelBarbeiro.SetActive(true);
+        EncontraPaineis_R.PainelBarbeiro.SetActive(true);
         Time.timeScale = 0;
     }
 }

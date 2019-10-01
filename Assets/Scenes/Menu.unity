@@ -2278,7 +2278,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2042497985}
-        m_MethodName: LigaDesligaSom
+        m_MethodName: OnOffSom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2580,8 +2580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b811f419f6329f4b97b02aa1020a018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  liga_Desliga: 1
-  estadoAtual: 0
   clipsMusica:
   - {fileID: 8300000, guid: 2fe5d84704795ec4c956854695bf048b, type: 3}
   musicaBG: {fileID: 598737820}

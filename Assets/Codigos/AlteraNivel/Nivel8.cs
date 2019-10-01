@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Nivel8 : MonoBehaviour
 {
-    public static Nivel8 instance;                     //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES            
+    Somador Somador_R = new Somador();           
     public static int AcaiDesseNivel, Venceu8;
     public static bool Passou8 = false;
-
-    //INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    void Awake()
-    {
-        instance = this;
-    }
 
     //FICA SEMPRE VERIFICANDO MUDANÇA NA VARIAVEL 'AcaiFase' e atribuindo a 'AcaiDesseNivel'
     public void Update()
     {
-        AcaiDesseNivel = Somador.AcaiFase;
+        AcaiDesseNivel = Somador_R.AcaiFase;
     }
 
     //VERIFICA COLISÃO COM O PLAYER 

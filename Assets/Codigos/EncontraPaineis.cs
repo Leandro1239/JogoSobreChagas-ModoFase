@@ -3,6 +3,6 @@ using UnityEngine;
 
 public class EncontraPaineis : MonoBehaviour
 {
-    public static EncontraPaineis instance;
+    // SERVE SOMENTE PARA COLOCAR OS PAINEIS
     public GameObject PainelLose, PainelWin, PainelPause, PainelTutorial, PainelColeta, PainelBarbeiro;
 }

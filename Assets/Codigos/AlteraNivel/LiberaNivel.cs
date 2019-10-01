@@ -4,7 +4,6 @@ using UnityEngine.UI;
 public class LiberaNivel : MonoBehaviour
 {
     // VARIAVEIS PARA COLOCAR OS BUTOES E PARA SIMBOLIZAR A PASSAGEM DE NIVEL
-    public static LiberaNivel instance;
     public Button Level2, Level3, Level4, Level5, Level6, Level7, Level8, Level9, Level10;
     bool Passou1, Passou2, Passou3, Passou4, Passou5, Passou6, Passou7, Passou8, Passou9, Passou10;
 

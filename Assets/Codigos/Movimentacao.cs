@@ -6,7 +6,8 @@ using System;
 // TRATA A MOVIMENTAÇÃO DO PERSONAGEM
 public class Movimentacao : MonoBehaviour 
 {
-    public static Movimentacao instance; 
+    ControlaAudio ControlaAudio_R = new ControlaAudio();
+    Sintoma Sintoma_R = new Sintoma();
     
     //PLAYER
     private GameObject player;                                                          //JOGADOR
@@ -61,12 +62,12 @@ public class Movimentacao : MonoBehaviour
         }
 
         // ANIMAÇÃO HIT
-        if (Sintoma.damage == 1)
+        if (Sintoma_R.damage == 1)
         {
             anime.SetBool("Hit", true);
-            Sintoma.damage = 0;
+            Sintoma_R.damage = 0;
         }
-        else if (Sintoma.damage == 0)
+        else if (Sintoma_R.damage == 0)
         {
             anime.SetBool("Hit", false);
         }
@@ -119,8 +120,7 @@ public class Movimentacao : MonoBehaviour
             anime.SetBool("Idle", false);
 
             // ADICIONA O SOM, A FORÇA DE PULO E FAZ COM QUE NÃO PULE EM SEGUIDA
-            ControlaAudio.instance.PlaySom(2);                // Gerenciador de Áudio
-            //player.AddForce(new Vector2(0, forcapulo), ForceMode2D.Impulse);         //ADICIONA UMA FORÇA ATRAVÉS DA VARIÁVEL 'forcapulo'                            
+            ControlaAudio_R.PlaySom(2);                // Gerenciador de Áudio
             noChao = false;
         }
     }

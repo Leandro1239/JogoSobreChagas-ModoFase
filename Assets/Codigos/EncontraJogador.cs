@@ -2,11 +2,9 @@
 using UnityEngine.UI;
 
 public class EncontraJogador : MonoBehaviour
-{
-    public static EncontraJogador instance;
-    
+{  
     private GameObject escolha1, escolha2, aparece, esconde;    // JOGADORES E OBJETOS
-    public static int escolheu = 1;      // VARIAVEIS DE CONTROLE DE TROCA
+    public int escolheu = 1;      // VARIAVEIS DE CONTROLE DE TROCA
     public Button J1, J2; 
 
     public void jogador1(){

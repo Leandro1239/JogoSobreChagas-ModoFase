@@ -5,9 +5,11 @@ using UnityEngine.UI;
 // COLETA O AÇAI EM CADA FASE
 public class Somador : MonoBehaviour
 {
+    ControlaAudio ControlaAudio_R = new ControlaAudio();
+
     // VARIÁVEIS
     public static Somador Instance;                              // INICIANDO A CLASSE PARA ELA FICAR VISÍVEL PARA OUTRAS CLASSES 
-    public static int AcaiFase = 0;                              // AÇAI
+    public int AcaiFase = 0;                              // AÇAI
 
     // TEXTOS NA TELA
     public Text Coleta_Fase;
@@ -21,7 +23,7 @@ public class Somador : MonoBehaviour
     {
         if (Coletar.gameObject.CompareTag("Coletor"))
         {
-            ControlaAudio.instance.PlaySom(0);                      // ATIVA O GERENCIADOR DE ÁUDIO
+            //ControlaAudio_R.PlaySom(0);                      // ATIVA O GERENCIADOR DE ÁUDIO
             Contador.instance.PegouAcai(1);                       // CHAMA O METODO 'PegouAcai' DA CLASSE 'ColectManager' E CONTA +1 EM SEU ARGUMENTO, ACUMULANDO PARA O TOTAL RESGATADO
             Destroy(Coletar.gameObject);                          // DESTROI O "Coletor", QUE É A TAG DO ACAI
             AcaiFase += 1;                                        // CONTA O AÇAI OBTIDO NA FASE

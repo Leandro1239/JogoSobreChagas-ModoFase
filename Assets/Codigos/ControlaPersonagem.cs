@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ControlaPersonagem : MonoBehaviour
 {
-    public static ControlaPersonagem instance;
+    EncontraJogador EncontraJogador_R = new EncontraJogador();
 
     // =========================== TROCA DE PERSONAGEM ======================= \\
     public GameObject player1, player2;
@@ -20,7 +20,7 @@ public class ControlaPersonagem : MonoBehaviour
             // CASO ESTEJA NA FASE DESEJADA, PROCURA O LOCAL DE CRIAÇÃO, COLOCA O JOGADOR LÁ E TROCA DE NOME
             if (cenaAtual.name  == "Fase-1" && jogadorAtivado == false){
                 // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
-                if(EncontraJogador.escolheu == 1){
+                if(EncontraJogador_R.escolheu == 1){
                     player1.SetActive(true);
                     achaJogador = GameObject.Find("CriaJogador");
                     achaJogador = Instantiate(player1, achaJogador.transform.position, achaJogador.transform.rotation);           
@@ -29,7 +29,7 @@ public class ControlaPersonagem : MonoBehaviour
                 }
 
                 // INSTANCIA O JOGADOR 1 PARA A POSIÇÃO DO GAMEOBJECT DENTRO DA CENA
-                if(EncontraJogador.escolheu == 2 ){
+                if(EncontraJogador_R.escolheu == 2 ){
                     player2.SetActive(true);
                     achaJogador = GameObject.Find("CriaJogador");
                     achaJogador = Instantiate(player2, achaJogador.transform.position, achaJogador.transform.rotation);
